@@ -1,0 +1,16 @@
+[
+    {
+        "images": [
+            {
+                "systemName": "d.square"
+            }
+        ],
+        "title": "Target Disk Mode",
+        "subtitle": "",
+        "keys": [
+            "T"
+        ],
+        "body": "A Control Key on Mac OS"
+    }
+]
+

@@ -8,6 +8,13 @@
 
 import Foundation
 import SwiftUI
+import Combine
+
+typealias KeyboardKey = String
+
+extension KeyboardKey: Identifiable {
+    public var id: String { return self }
+}
 
 struct CommandKeys: Hashable, Codable, Identifiable {
     
@@ -18,13 +25,13 @@ struct CommandKeys: Hashable, Codable, Identifiable {
     let images: [DisplayImage]
     let title: String
     let subtitle: String
-    let keys: [String]
+    let keys: [KeyboardKey]
     let body: String
     
     let urlString: String? = nil
     
     var allKeys: String {
-       keys.joined(separator: ", ")
+        keys.joined(separator: ", ")
     }
 }
 
@@ -35,7 +42,18 @@ struct DisplayImage: Hashable, Codable, Identifiable {
     }
 }
 
-struct Commander {
+class Commander: BindableObject {
+    
+    var didChange = PassthroughSubject<Void, Never>()
+    
+    init(data: Data) {
+        let decoder = JSONDecoder()
+        dynamicCommands = []
+        if let commands = try? decoder.decode([CommandKeys].self,
+                                              from: data) {
+            dynamicCommands = commands
+        }
+    }
     
     static let forAll = "For all commands hold them until you see the screen change from black to "
     
@@ -45,20 +63,18 @@ struct Commander {
         return URL(string: Commander.appleSupportRootUrlString)!
     }()
     
+    var dynamicCommands: [CommandKeys] = []
     static let commands = [
-        
         CommandKeys(images: [DisplayImage(systemName: "t.square")],
                     title: "Target Disk Mode",
                     subtitle: "",
                     keys: ["T"],
                     body: "A Control Key on Mac OS"),
-        
         CommandKeys(images: [DisplayImage(systemName: "d.square")],
                     title: "Force the internal hard drive to be the boot drive",
                     subtitle: "",
                     keys: ["D"],
                     body: ""),
-        
         CommandKeys(images: [DisplayImage(systemName: "command"),
                              DisplayImage(systemName: "option"),
                              DisplayImage(systemName: "p.square"),
@@ -67,7 +83,6 @@ struct Commander {
                     subtitle: "",
                     keys: ["Command", "Option", "P", "R"],
                     body: ""),
-        
         CommandKeys(images: [DisplayImage(systemName: "command"),
                              DisplayImage(systemName: "option"),
                              DisplayImage(systemName: "n.square"),
@@ -76,20 +91,17 @@ struct Commander {
                     subtitle: "Similar to reset-all in open Firmware",
                     keys: ["Command", "Option", "N", "V"],
                     body: ""),
-        
         CommandKeys(images: [DisplayImage(systemName: "n.square")],
                     title: "Attempt to boot from network server",
                     subtitle: "",
                     keys: ["N"],
                     body: ""),
-        
         CommandKeys(images: [DisplayImage(systemName: "command"),
                              DisplayImage(systemName: "option")],
                     title: "Rebuild Desktop",
                     subtitle: "",
                     keys: ["Command", "Option"],
                     body: ""),
-        
         CommandKeys(images: [DisplayImage(systemName: "command"),
                              DisplayImage(systemName: "option"),
                              DisplayImage(systemName: "shift"),
@@ -98,32 +110,27 @@ struct Commander {
                     subtitle: "",
                     keys: ["Command", "Option", "Shift", "Delete"],
                     body: ""),
-        
         CommandKeys(images: [DisplayImage(systemName: "c.square")],
                     title: "Startup From a CD or DVD",
                     subtitle: "",
                     keys: ["C"],
                     body: "Use this command to startup the mac targeting an onboard CD or DVD Drive or using an external Apple CD Drive Bay (Get proper name before release."),
- 
         CommandKeys(images: [DisplayImage(systemName: "command")],
                     title: "Boot with Virtual Memory off",
                     subtitle: "",
                     keys: ["Command"],
                     body: ""),
-        
         CommandKeys(images: [DisplayImage(systemName: "shift")],
                     title: "Disable Extensions",
                     subtitle: "",
                     keys: ["Shift"],
                     body: ""),
-        
-        
         CommandKeys(images: [DisplayImage(systemName: "x.square")],
                     title: "Startup in OSX",
                     subtitle: "",
                     keys: ["X"],
                     body: "If more than one disk is present on Older Macs the X is used to startup in Mac OSX"),
-     
+        
         
         /*
          Boot from a specific SCSI ID #. (# is SCSI ID number): command option shift delete #
@@ -146,6 +153,6 @@ struct Commander {
          */
         
         
-
+        
     ]
 }
