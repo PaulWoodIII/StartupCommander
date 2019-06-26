@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainNavigationView.swift
 //  StartupCommander
 //
 //  Created by Paul Wood on 6/24/19.
@@ -8,16 +8,20 @@
 
 import SwiftUI
 
-struct ContentView : View {
+struct MainNavigationView : View {
     var body: some View {
-        Text("Hello World")
+        NavigationView {
+            ContentView()
+        }
+        
+        
     }
 }
 
 #if DEBUG
-struct ContentView_Previews : PreviewProvider {
+struct MainNavigationView_Previews : PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainNavigationView()
     }
 }
 #endif
