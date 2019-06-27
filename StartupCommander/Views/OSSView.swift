@@ -7,18 +7,37 @@
 //
 
 import SwiftUI
-
+import SFSafeSymbols
 struct OSSView : View {
     
-    let ossBody = """
-100% of this code is written by Paul Wood and currently is closed source until this view gets changed. Hopefully that will happen shortly
-"""
+    @EnvironmentObject var ossDataStore: OSSDataStore
     
     var body: some View {
-        List {
-            Text(ossBody)
-                .lineLimit(.max)
-        }
+        VStack {
+            HStack {
+                Image(systemSymbol: SFSymbol.chevronLeftSlashChevronRight)
+                    .font(.title)
+                Text("This application uses some great Open Soure Software tools using Swift Package Manager")
+                    .lineLimit(.max)
+                    .font(.body)
+                Image(systemSymbol: SFSymbol.chevronLeftSlashChevronRight)
+                    .font(.title)
+            }
+            
+          
+            
+            List(ossDataStore.licences) { software in
+                VStack(alignment: .leading) {
+                    Text(software.title)
+                        .font(.title)
+                        .lineLimit(.max)
+                    Text(software.license)
+                        .font(.caption)
+                        .lineLimit(.max)
+                }
+            }
+        }.navigationBarTitle(Text("Open Source Software"))
+
         
     }
 }
@@ -26,7 +45,9 @@ struct OSSView : View {
 #if DEBUG
 struct OSSView_Previews : PreviewProvider {
     static var previews: some View {
-        OSSView()
+        NavigationView {
+            OSSView().environmentObject(OSSDataStore())
+        }
     }
 }
 #endif

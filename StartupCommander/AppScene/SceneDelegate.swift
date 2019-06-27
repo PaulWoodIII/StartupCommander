@@ -23,8 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             let swiftRoot = MainNavigationView()
-                .environmentObject(Resume())
-                .environmentObject(Commander(data: DataAssets.Commands.value))
+                .modifier(iPhoneEnvironment())
+
             window.rootViewController = UIHostingController(rootView: swiftRoot)
             self.window = window
             window.makeKeyAndVisible()

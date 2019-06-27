@@ -7,8 +7,12 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 struct SettingsView : View {
+
+    @EnvironmentObject var resume: Resume
+
     var body: some View {
         NavigationView {
             
@@ -78,15 +82,26 @@ struct SettingsView : View {
                     
                     HStack{
                         VStack(alignment: .leading) {
-                            Text("Rate this Application")
-                                .font(.headline)
+                            HStack {
+                                Image(systemSymbol: .starFill)
+                                    .foregroundColor(.secondary)
+                                    .font(.caption)
+                                Text("Rate this Application")
+                                    .foregroundColor(.blue)
+                                    .font(.headline)
+                                Image(systemSymbol: .starFill)
+                                    .foregroundColor(.secondary)
+                                    .font(.caption)
+                            }
                             Text("Any kind of feedback would be helpful but a great review is probabaly the best kind of feedback")
                                 .lineLimit(.max)
                                 .font(.body)
                         }
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                        }.tapAction(emailAction)
+                        
+
+                        
+                        
+                        }.tapAction(rateAction)
                     
                 }
                 
@@ -96,7 +111,11 @@ struct SettingsView : View {
         }
     }
     
-    func emailAction() -> Void {
+    func emailAction() {
+        print(Resume.contactEmailUrlString)
+    }
+    
+    func rateAction() {
         
     }
 }

@@ -48,10 +48,12 @@ class Resume: BindableObject {
     Proven Full-Stack global software Developer with solid experience working for Fortune 500 enterprises and start-ups. Demonstrated success working in a consultant lead development role and as an individual contributor for projects including cloud-based servers and embedded systems design with multi-platform mobile applications. Collaborative communicator, conversational in Chinese, capable of working with internal and external teams to deliver projects on time and aligned with requirements.
     """
     
+    static let contactEmailUrlString = "mailto:paul.wood.iii@gmail.com"
+    
     let contact: [ContactInfo] = [
         ContactInfo(type:"Email",
                     value:"paul.wood.iii@gmail.com",
-                    urlString:"mailto:paul.wood.iii@gmail.com"),
+                    urlString:contactEmailUrlString),
         ContactInfo(type:"Phone",
                     value:"843- 253-3496",
                     urlString:"tel:843- 253-3496"),

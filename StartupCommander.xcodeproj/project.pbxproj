@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,9 @@
 		3C2C5BBD22C2F7260064357D /* Resume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2C5BBC22C2F7260064357D /* Resume.swift */; };
 		3C63FDD222C410AE006956C5 /* CommanderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C63FDD122C410AE006956C5 /* CommanderTests.swift */; };
 		3C63FDD522C412C1006956C5 /* DataAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C63FDD422C412C1006956C5 /* DataAssets.swift */; };
+		3C63FDDA22C4171F006956C5 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 3C63FDD922C4171F006956C5 /* SFSafeSymbols */; };
+		3C63FDDC22C41763006956C5 /* OSSDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C63FDDB22C41763006956C5 /* OSSDataStore.swift */; };
+		3C63FDDE22C41BB5006956C5 /* iPhoneEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C63FDDD22C41BB5006956C5 /* iPhoneEnvironment.swift */; };
 		3C766CEC22C3B5DA00BBB720 /* SwiftUI+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C766CEB22C3B5DA00BBB720 /* SwiftUI+Ext.swift */; };
 		3C766CEE22C3C13C00BBB720 /* ContactMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C766CED22C3C13C00BBB720 /* ContactMethodCell.swift */; };
 		3C766CF022C3C5EB00BBB720 /* ListOStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C766CEF22C3C5EB00BBB720 /* ListOStrings.swift */; };
@@ -77,6 +80,8 @@
 		3C2C5BBC22C2F7260064357D /* Resume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resume.swift; sourceTree = "<group>"; };
 		3C63FDD122C410AE006956C5 /* CommanderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommanderTests.swift; sourceTree = "<group>"; };
 		3C63FDD422C412C1006956C5 /* DataAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAssets.swift; sourceTree = "<group>"; };
+		3C63FDDB22C41763006956C5 /* OSSDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSSDataStore.swift; sourceTree = "<group>"; };
+		3C63FDDD22C41BB5006956C5 /* iPhoneEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPhoneEnvironment.swift; sourceTree = "<group>"; };
 		3C766CEB22C3B5DA00BBB720 /* SwiftUI+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Ext.swift"; sourceTree = "<group>"; };
 		3C766CED22C3C13C00BBB720 /* ContactMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMethodCell.swift; sourceTree = "<group>"; };
 		3C766CEF22C3C5EB00BBB720 /* ListOStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOStrings.swift; sourceTree = "<group>"; };
@@ -88,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C63FDDA22C4171F006956C5 /* SFSafeSymbols in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,19 +179,18 @@
 		3C0D75EB22C19F3B00EF0E0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3C48363A22C456E7004513D2 /* Extensions */,
 				3C0D75E922C19DD300EF0E0D /* MainNavigationView.swift */,
 				3C0D75BB22C1781A00EF0E0D /* ContentView.swift */,
 				3C0D75EE22C19F8C00EF0E0D /* CommandRow.swift */,
 				3C0D75F022C1A49600EF0E0D /* CommandKeyDetail.swift */,
 				3C1942D522C2782000BDF4A9 /* SafariContainterView.swift */,
-				3C1942D722C2ACE300BDF4A9 /* SettingsView.swift */,
-				3C1942DB22C2D62400BDF4A9 /* OSSView.swift */,
 				3C1942DD22C2D6A900BDF4A9 /* AboutPaulView.swift */,
 				3C2C5BBA22C2F6FA0064357D /* WorkExperienceCell.swift */,
 				3C766CED22C3C13C00BBB720 /* ContactMethodCell.swift */,
 				3C766CEF22C3C5EB00BBB720 /* ListOStrings.swift */,
-				3C766CEB22C3B5DA00BBB720 /* SwiftUI+Ext.swift */,
-				3C766CF122C3C8D100BBB720 /* SwiftUI+Styles.swift */,
+				3C1942D722C2ACE300BDF4A9 /* SettingsView.swift */,
+				3C1942DB22C2D62400BDF4A9 /* OSSView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 			children = (
 				3C0D75E722C1791900EF0E0D /* Commands.swift */,
 				3C2C5BBC22C2F7260064357D /* Resume.swift */,
+				3C63FDDB22C41763006956C5 /* OSSDataStore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -204,8 +210,18 @@
 			children = (
 				3C0D75B422C1781A00EF0E0D /* AppDelegate.swift */,
 				3C0D75B622C1781A00EF0E0D /* SceneDelegate.swift */,
+				3C63FDDD22C41BB5006956C5 /* iPhoneEnvironment.swift */,
 			);
 			path = AppScene;
+			sourceTree = "<group>";
+		};
+		3C48363A22C456E7004513D2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3C766CEB22C3B5DA00BBB720 /* SwiftUI+Ext.swift */,
+				3C766CF122C3C8D100BBB720 /* SwiftUI+Styles.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		3C63FDD322C412AC006956C5 /* Assets */ = {
@@ -232,6 +248,9 @@
 			dependencies = (
 			);
 			name = StartupCommander;
+			packageProductDependencies = (
+				3C63FDD922C4171F006956C5 /* SFSafeSymbols */,
+			);
 			productName = StartupCommander;
 			productReference = 3C0D75B122C1781A00EF0E0D /* StartupCommander.app */;
 			productType = "com.apple.product-type.application";
@@ -304,6 +323,9 @@
 				Base,
 			);
 			mainGroup = 3C0D75A822C1781A00EF0E0D;
+			packageReferences = (
+				3C63FDD822C4171F006956C5 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+			);
 			productRefGroup = 3C0D75B222C1781A00EF0E0D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -348,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C766CF022C3C5EB00BBB720 /* ListOStrings.swift in Sources */,
+				3C63FDDC22C41763006956C5 /* OSSDataStore.swift in Sources */,
 				3C2C5BBB22C2F6FA0064357D /* WorkExperienceCell.swift in Sources */,
 				3C1942D622C2782000BDF4A9 /* SafariContainterView.swift in Sources */,
 				3C0D75B522C1781A00EF0E0D /* AppDelegate.swift in Sources */,
@@ -358,6 +381,7 @@
 				3C766CF222C3C8D100BBB720 /* SwiftUI+Styles.swift in Sources */,
 				3C1942D822C2ACE300BDF4A9 /* SettingsView.swift in Sources */,
 				3C1942DE22C2D6A900BDF4A9 /* AboutPaulView.swift in Sources */,
+				3C63FDDE22C41BB5006956C5 /* iPhoneEnvironment.swift in Sources */,
 				3C0D75F122C1A49600EF0E0D /* CommandKeyDetail.swift in Sources */,
 				3C0D75BC22C1781A00EF0E0D /* ContentView.swift in Sources */,
 				3C2C5BBD22C2F7260064357D /* Resume.swift in Sources */,
@@ -688,6 +712,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3C63FDD822C4171F006956C5 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/piknotech/SFSafeSymbols.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3C63FDD922C4171F006956C5 /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C63FDD822C4171F006956C5 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		3C0D75B822C1781A00EF0E0D /* StartupCommander.xcdatamodeld */ = {
