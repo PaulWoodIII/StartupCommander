@@ -30,7 +30,8 @@ struct SafariContainerView: UIViewControllerRepresentable {
         return vc
     }
     
-    func updateUIViewController(_ uiViewController: SFSafariViewController, context: UIViewControllerRepresentableContext<SafariContainerView>) {
+    func updateUIViewController(_ uiViewController: SFSafariViewController,
+                                context: UIViewControllerRepresentableContext<SafariContainerView>) {
         
     }
 }

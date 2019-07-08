@@ -34,6 +34,9 @@
 		3C766CEE22C3C13C00BBB720 /* ContactMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C766CED22C3C13C00BBB720 /* ContactMethodCell.swift */; };
 		3C766CF022C3C5EB00BBB720 /* ListOStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C766CEF22C3C5EB00BBB720 /* ListOStrings.swift */; };
 		3C766CF222C3C8D100BBB720 /* SwiftUI+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C766CF122C3C8D100BBB720 /* SwiftUI+Styles.swift */; };
+		3CA1D6BF22D3CB7E0085049A /* PresentationLink2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1D6BE22D3CB7E0085049A /* PresentationLink2.swift */; };
+		3CABDB0922D3957E00D62303 /* PhoneCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABDB0822D3957E00D62303 /* PhoneCaller.swift */; };
+		3CABDB0B22D3964300D62303 /* EmailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABDB0A22D3964300D62303 /* EmailSender.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +89,9 @@
 		3C766CED22C3C13C00BBB720 /* ContactMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMethodCell.swift; sourceTree = "<group>"; };
 		3C766CEF22C3C5EB00BBB720 /* ListOStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOStrings.swift; sourceTree = "<group>"; };
 		3C766CF122C3C8D100BBB720 /* SwiftUI+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Styles.swift"; sourceTree = "<group>"; };
+		3CA1D6BE22D3CB7E0085049A /* PresentationLink2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationLink2.swift; sourceTree = "<group>"; };
+		3CABDB0822D3957E00D62303 /* PhoneCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCaller.swift; sourceTree = "<group>"; };
+		3CABDB0A22D3964300D62303 /* EmailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,17 +185,17 @@
 		3C0D75EB22C19F3B00EF0E0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3CABDB0C22D396EC00D62303 /* UIKitHost */,
 				3C48363A22C456E7004513D2 /* Extensions */,
 				3C0D75E922C19DD300EF0E0D /* MainNavigationView.swift */,
 				3C0D75BB22C1781A00EF0E0D /* ContentView.swift */,
 				3C0D75EE22C19F8C00EF0E0D /* CommandRow.swift */,
 				3C0D75F022C1A49600EF0E0D /* CommandKeyDetail.swift */,
-				3C1942D522C2782000BDF4A9 /* SafariContainterView.swift */,
+				3C1942D722C2ACE300BDF4A9 /* SettingsView.swift */,
 				3C1942DD22C2D6A900BDF4A9 /* AboutPaulView.swift */,
 				3C2C5BBA22C2F6FA0064357D /* WorkExperienceCell.swift */,
 				3C766CED22C3C13C00BBB720 /* ContactMethodCell.swift */,
 				3C766CEF22C3C5EB00BBB720 /* ListOStrings.swift */,
-				3C1942D722C2ACE300BDF4A9 /* SettingsView.swift */,
 				3C1942DB22C2D62400BDF4A9 /* OSSView.swift */,
 			);
 			path = Views;
@@ -201,6 +207,7 @@
 				3C0D75E722C1791900EF0E0D /* Commands.swift */,
 				3C2C5BBC22C2F7260064357D /* Resume.swift */,
 				3C63FDDB22C41763006956C5 /* OSSDataStore.swift */,
+				3CABDB0822D3957E00D62303 /* PhoneCaller.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -220,6 +227,7 @@
 			children = (
 				3C766CEB22C3B5DA00BBB720 /* SwiftUI+Ext.swift */,
 				3C766CF122C3C8D100BBB720 /* SwiftUI+Styles.swift */,
+				3CA1D6BE22D3CB7E0085049A /* PresentationLink2.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -230,6 +238,15 @@
 				3C63FDD422C412C1006956C5 /* DataAssets.swift */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		3CABDB0C22D396EC00D62303 /* UIKitHost */ = {
+			isa = PBXGroup;
+			children = (
+				3C1942D522C2782000BDF4A9 /* SafariContainterView.swift */,
+				3CABDB0A22D3964300D62303 /* EmailSender.swift */,
+			);
+			path = UIKitHost;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,7 +392,9 @@
 				3C1942D622C2782000BDF4A9 /* SafariContainterView.swift in Sources */,
 				3C0D75B522C1781A00EF0E0D /* AppDelegate.swift in Sources */,
 				3C63FDD522C412C1006956C5 /* DataAssets.swift in Sources */,
+				3CABDB0B22D3964300D62303 /* EmailSender.swift in Sources */,
 				3C0D75EF22C19F8C00EF0E0D /* CommandRow.swift in Sources */,
+				3CABDB0922D3957E00D62303 /* PhoneCaller.swift in Sources */,
 				3C0D75EA22C19DD300EF0E0D /* MainNavigationView.swift in Sources */,
 				3C0D75B722C1781A00EF0E0D /* SceneDelegate.swift in Sources */,
 				3C766CF222C3C8D100BBB720 /* SwiftUI+Styles.swift in Sources */,
@@ -389,6 +408,7 @@
 				3C0D75E822C1791900EF0E0D /* Commands.swift in Sources */,
 				3C766CEC22C3B5DA00BBB720 /* SwiftUI+Ext.swift in Sources */,
 				3C0D75BA22C1781A00EF0E0D /* StartupCommander.xcdatamodeld in Sources */,
+				3CA1D6BF22D3CB7E0085049A /* PresentationLink2.swift in Sources */,
 				3C766CEE22C3C13C00BBB720 /* ContactMethodCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

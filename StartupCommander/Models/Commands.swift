@@ -48,7 +48,6 @@ class Commander: BindableObject {
     
     init(data: Data) {
         let decoder = JSONDecoder()
-        dynamicCommands = []
         if let commands = try? decoder.decode([CommandKeys].self,
                                               from: data) {
             dynamicCommands = commands
@@ -63,7 +62,11 @@ class Commander: BindableObject {
         return URL(string: Commander.appleSupportRootUrlString)!
     }()
     
-    var dynamicCommands: [CommandKeys] = []
+  var dynamicCommands: [CommandKeys] = [] {
+    didSet {
+      didChange.send()
+    }
+  }
     static let commands = [
         CommandKeys(images: [DisplayImage(systemName: "t.square")],
                     title: "Target Disk Mode",

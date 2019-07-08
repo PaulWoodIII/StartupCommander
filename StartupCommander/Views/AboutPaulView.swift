@@ -24,10 +24,10 @@ struct TitleText: ViewModifier {
 
 struct AboutPaulView : View {
     
-    @EnvironmentObject var resume: Resume
+    var resume = Resume()
     
     struct ContactInfoSectionView: View {
-        @EnvironmentObject var resume: Resume
+        var resume: Resume
         var body: some View {
             Section(header: Text("Contact").titleStyle()) {
                 ForEach(resume.contact) { contactInfo in
@@ -38,7 +38,7 @@ struct AboutPaulView : View {
     }
     
     struct ByLineSectionView: View {
-        @EnvironmentObject var resume: Resume
+        var resume: Resume
         var body : some View {
             Section(header: Text("Software Developer").titleStyle()) {
                 Text(resume.byline)
@@ -49,7 +49,7 @@ struct AboutPaulView : View {
     }
     
     struct ResumeAccomplishmentsSectionView: View {
-        @EnvironmentObject var resume: Resume
+        var resume: Resume
         var body: some View {
             Section(header: Text(resume.accomplisments).titleStyle()) {
                 ForEach(resume.accomplismentsContent) { acc in
@@ -63,7 +63,7 @@ struct AboutPaulView : View {
     }
     
     struct EducationSectionView: View {
-        @EnvironmentObject var resume: Resume
+        var resume: Resume
         var body: some View {
             Section(header: Text(resume.education).titleStyle()) {
                 Text(resume.educationContent)
@@ -74,7 +74,7 @@ struct AboutPaulView : View {
     }
     
     struct ExpreienceSectionView: View {
-        @EnvironmentObject var resume: Resume
+        var resume: Resume
         var body: some View {
             Section(header: Text("Experience").titleStyle()) {
                 ForEach(resume.workExperience) { exp in
@@ -86,11 +86,11 @@ struct AboutPaulView : View {
     
     var body: some View {
         Form {
-            ContactInfoSectionView()
-            ByLineSectionView()
-            ResumeAccomplishmentsSectionView()
-            ExpreienceSectionView()
-            EducationSectionView()
+          ContactInfoSectionView(resume: resume)
+            ByLineSectionView(resume: resume)
+            ResumeAccomplishmentsSectionView(resume: resume)
+            ExpreienceSectionView(resume: resume)
+            EducationSectionView(resume: resume)
             }
             .navigationBarTitle(
                 Text("Paul Wood")
@@ -103,7 +103,6 @@ struct AboutPaulView_Previews : PreviewProvider {
     static var previews: some View {
         NavigationView {
             AboutPaulView()
-            .environmentObject(Resume())
         }
     }
 }

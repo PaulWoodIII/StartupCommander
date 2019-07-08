@@ -9,12 +9,11 @@
 import SwiftUI
 
 struct MainNavigationView : View {
+    
     var body: some View {
         NavigationView {
             ContentView()
         }
-        
-        
     }
 }
 
@@ -22,6 +21,7 @@ struct MainNavigationView : View {
 struct MainNavigationView_Previews : PreviewProvider {
     static var previews: some View {
         MainNavigationView()
+          .modifier(iPhoneEnvironment())
     }
 }
 #endif

@@ -13,9 +13,7 @@ class CommanderTests: XCTestCase {
 
     func testExample() {
         let c = Commander(data: DataAssets.Commands.value)
-        XCTAssert(c.dynamicCommands != nil)
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        XCTAssertEqual(c.dynamicCommands.count, 13)
     }
 
 
