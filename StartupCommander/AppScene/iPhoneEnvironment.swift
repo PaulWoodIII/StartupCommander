@@ -19,6 +19,5 @@ struct iPhoneEnvironment: ViewModifier {
     func body(content: Content) -> some View {
         content
             .environmentObject(Environment.shared.commander)
-            .environmentObject(Environment.shared.ossDataStore)
     }
 }

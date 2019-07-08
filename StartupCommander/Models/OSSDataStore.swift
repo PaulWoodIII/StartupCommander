@@ -15,11 +15,9 @@ struct OSSDependency: Identifiable {
     var license: String
 }
 
-class OSSDataStore: BindableObject {
-    
-    var didChange = PassthroughSubject<Void, Never>()
-
-    let licences: [OSSDependency] = [
+struct OSSDataStore {
+  
+    static let licences: [OSSDependency] = [
         OSSDependency(title: "SFSafeSymbols", license: """
 # The MIT License (MIT)
 
