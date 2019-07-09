@@ -13,6 +13,40 @@ struct ContentView : View {
   
   @EnvironmentObject var commander: Commander
   
+  @State var isAboutShown: Bool = false
+  @State var isAppleSupportShown: Bool = false
+  
+  var gearButton : some View {
+    Button(action: {
+      self.isAboutShown = true
+    }, label: {
+      Image(systemName: "gear")
+        .imageScale(.large)
+        .accessibility(label: Text("About and Help"))
+        .padding()
+    })
+  }
+  
+  var settingsModal: Modal {
+    Modal(SettingsView())
+  }
+  
+  var appleSupportButton: some View {
+    
+    Button( action: {
+      self.isAppleSupportShown = true
+    }, label: {
+      Text(" Support")
+        .accessibility(label: Text("Apple Support"))
+        .padding()
+    })
+    
+  }
+  
+  var appleSupportModal: Modal {
+    Modal(SafariContainerView(url: Commander.appleSupportRootUrl))
+  }
+  
   var body: some View {
     VStack {
       Text(Commander.forAll)
@@ -28,7 +62,9 @@ struct ContentView : View {
         CommandRow(command: command)
       }
     }
-    .navigationBarTitle(Text("Startup Commander"))
+//    .presentation( isAboutShown ? settingsModal : nil)
+//      .presentation( isAppleSupportShown ? appleSupportModal : nil)
+      .navigationBarTitle(Text("Startup Commander"))
       .navigationBarItems(leading:
         
         //TODO: Change

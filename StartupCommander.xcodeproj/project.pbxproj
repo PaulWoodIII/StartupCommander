@@ -23,6 +23,7 @@
 		3C1942D822C2ACE300BDF4A9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1942D722C2ACE300BDF4A9 /* SettingsView.swift */; };
 		3C1942DC22C2D62400BDF4A9 /* OSSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1942DB22C2D62400BDF4A9 /* OSSView.swift */; };
 		3C1942DE22C2D6A900BDF4A9 /* AboutPaulView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1942DD22C2D6A900BDF4A9 /* AboutPaulView.swift */; };
+		3C1B546222D4CB2A006F686A /* DoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1B546122D4CB2A006F686A /* DoneButton.swift */; };
 		3C2C5BBB22C2F6FA0064357D /* WorkExperienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2C5BBA22C2F6FA0064357D /* WorkExperienceCell.swift */; };
 		3C2C5BBD22C2F7260064357D /* Resume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2C5BBC22C2F7260064357D /* Resume.swift */; };
 		3C63FDD222C410AE006956C5 /* CommanderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C63FDD122C410AE006956C5 /* CommanderTests.swift */; };
@@ -80,6 +81,7 @@
 		3C1942D722C2ACE300BDF4A9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3C1942DB22C2D62400BDF4A9 /* OSSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSSView.swift; sourceTree = "<group>"; };
 		3C1942DD22C2D6A900BDF4A9 /* AboutPaulView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPaulView.swift; sourceTree = "<group>"; };
+		3C1B546122D4CB2A006F686A /* DoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneButton.swift; sourceTree = "<group>"; };
 		3C2C5BBA22C2F6FA0064357D /* WorkExperienceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkExperienceCell.swift; sourceTree = "<group>"; };
 		3C2C5BBC22C2F7260064357D /* Resume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resume.swift; sourceTree = "<group>"; };
 		3C63FDD122C410AE006956C5 /* CommanderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommanderTests.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				3C766CEB22C3B5DA00BBB720 /* SwiftUI+Ext.swift */,
 				3C766CF122C3C8D100BBB720 /* SwiftUI+Styles.swift */,
 				3CA1D6BE22D3CB7E0085049A /* PresentationLink2.swift */,
+				3C1B546122D4CB2A006F686A /* DoneButton.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				3C2C5BBD22C2F7260064357D /* Resume.swift in Sources */,
 				3C1942DC22C2D62400BDF4A9 /* OSSView.swift in Sources */,
 				3C0D75E822C1791900EF0E0D /* Commands.swift in Sources */,
+				3C1B546222D4CB2A006F686A /* DoneButton.swift in Sources */,
 				3C766CEC22C3B5DA00BBB720 /* SwiftUI+Ext.swift in Sources */,
 				3C0D75BA22C1781A00EF0E0D /* StartupCommander.xcdatamodeld in Sources */,
 				3CA1D6BF22D3CB7E0085049A /* PresentationLink2.swift in Sources */,
