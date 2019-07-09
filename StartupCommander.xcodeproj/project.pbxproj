@@ -198,11 +198,11 @@
 				3C0D75EE22C19F8C00EF0E0D /* CommandRow.swift */,
 				3C0D75F022C1A49600EF0E0D /* CommandKeyDetail.swift */,
 				3C1942D722C2ACE300BDF4A9 /* SettingsView.swift */,
+				3C1942DB22C2D62400BDF4A9 /* OSSView.swift */,
 				3C1942DD22C2D6A900BDF4A9 /* AboutPaulView.swift */,
 				3C2C5BBA22C2F6FA0064357D /* WorkExperienceCell.swift */,
 				3C766CED22C3C13C00BBB720 /* ContactMethodCell.swift */,
 				3C766CEF22C3C5EB00BBB720 /* ListOStrings.swift */,
-				3C1942DB22C2D62400BDF4A9 /* OSSView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -211,8 +211,8 @@
 			isa = PBXGroup;
 			children = (
 				3C0D75E722C1791900EF0E0D /* Commands.swift */,
-				3C2C5BBC22C2F7260064357D /* Resume.swift */,
 				3C63FDDB22C41763006956C5 /* OSSDataStore.swift */,
+				3C2C5BBC22C2F7260064357D /* Resume.swift */,
 				3CABDB0822D3957E00D62303 /* PhoneCaller.swift */,
 			);
 			path = Models;
