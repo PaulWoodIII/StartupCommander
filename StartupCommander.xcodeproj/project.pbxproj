@@ -35,6 +35,7 @@
 		3C766CF022C3C5EB00BBB720 /* ListOStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C766CEF22C3C5EB00BBB720 /* ListOStrings.swift */; };
 		3C766CF222C3C8D100BBB720 /* SwiftUI+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C766CF122C3C8D100BBB720 /* SwiftUI+Styles.swift */; };
 		3CA1D6BF22D3CB7E0085049A /* PresentationLink2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1D6BE22D3CB7E0085049A /* PresentationLink2.swift */; };
+		3CA1D6C322D3D48C0085049A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA1D6C222D3D48C0085049A /* CloudKit.framework */; };
 		3CABDB0922D3957E00D62303 /* PhoneCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABDB0822D3957E00D62303 /* PhoneCaller.swift */; };
 		3CABDB0B22D3964300D62303 /* EmailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABDB0A22D3964300D62303 /* EmailSender.swift */; };
 /* End PBXBuildFile section */
@@ -90,6 +91,8 @@
 		3C766CEF22C3C5EB00BBB720 /* ListOStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOStrings.swift; sourceTree = "<group>"; };
 		3C766CF122C3C8D100BBB720 /* SwiftUI+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Styles.swift"; sourceTree = "<group>"; };
 		3CA1D6BE22D3CB7E0085049A /* PresentationLink2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationLink2.swift; sourceTree = "<group>"; };
+		3CA1D6C022D3D4890085049A /* StartupCommander.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StartupCommander.entitlements; sourceTree = "<group>"; };
+		3CA1D6C222D3D48C0085049A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		3CABDB0822D3957E00D62303 /* PhoneCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCaller.swift; sourceTree = "<group>"; };
 		3CABDB0A22D3964300D62303 /* EmailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C63FDDA22C4171F006956C5 /* SFSafeSymbols in Frameworks */,
+				3CA1D6C322D3D48C0085049A /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +131,7 @@
 				3C0D75CD22C1781A00EF0E0D /* StartupCommanderTests */,
 				3C0D75D822C1781A00EF0E0D /* StartupCommanderUITests */,
 				3C0D75B222C1781A00EF0E0D /* Products */,
+				3CA1D6C122D3D48C0085049A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,6 +148,7 @@
 		3C0D75B322C1781A00EF0E0D /* StartupCommander */ = {
 			isa = PBXGroup;
 			children = (
+				3CA1D6C022D3D4890085049A /* StartupCommander.entitlements */,
 				3C63FDD322C412AC006956C5 /* Assets */,
 				3C0D75ED22C19F6000EF0E0D /* AppScene */,
 				3C0D75EC22C19F4B00EF0E0D /* Models */,
@@ -238,6 +244,14 @@
 				3C63FDD422C412C1006956C5 /* DataAssets.swift */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		3CA1D6C122D3D48C0085049A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3CA1D6C222D3D48C0085049A /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		3CABDB0C22D396EC00D62303 /* UIKitHost */ = {
@@ -574,6 +588,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = StartupCommander/StartupCommander.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "StartupCommander/Preview\\ Content";
 				DEVELOPMENT_TEAM = BDB4XSJTE3;
@@ -594,6 +609,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = StartupCommander/StartupCommander.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "StartupCommander/Preview\\ Content";
 				DEVELOPMENT_TEAM = BDB4XSJTE3;

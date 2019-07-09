@@ -14,9 +14,7 @@ struct CommandRow : View {
   
   var body: some View {
     NavigationLink(destination: CommandKeyDetail(command: command)) {
-      HStack {
         VStack(alignment: .leading) {
-          
           HStack {
             ForEach(command.images) { (displayImage: DisplayImage) in
               Image(systemName: displayImage.systemName)
@@ -24,29 +22,24 @@ struct CommandRow : View {
                 .font(.title)
             }
           }
-          
           Text(command.title)
             .font(.headline)
-          
+          .scaledToFill()
           Text("Press Keys: " + command.allKeys)
             .font(.body)
         }
-        
-        Spacer()
-        
-      }
     }
+    .lineLimit(nil)
   }
 }
 
 #if DEBUG
 struct CommandRow_Previews : PreviewProvider {
   static var previews: some View {
-    Group {
-      CommandRow(command: Commander.commands[0])
-        .previewLayout(.sizeThatFits)
-      CommandRow(command: Commander.commands[3])
-      //             .previewLayout(.fixed(width: 300, height: 150))
+    NavigationView {
+      List(Commander.testCommands) { command in
+        CommandRow(command: command)
+      }.navigationBarTitle("Command Row Tests")
     }
   }
 }

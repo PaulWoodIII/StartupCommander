@@ -11,6 +11,8 @@ import UIKit
 
 struct ContentView : View {
   
+  @EnvironmentObject var commander: Commander
+  
   var body: some View {
     VStack {
       Text(Commander.forAll)
@@ -22,13 +24,14 @@ struct ContentView : View {
       Divider()
         .padding(.top)
       
-      List(Commander.commands) { (command: CommandKeys) in
+      List(commander.commands) { (command: CommandKeys) in
         CommandRow(command: command)
       }
     }
     .navigationBarTitle(Text("Startup Commander"))
       .navigationBarItems(leading:
         
+        //TODO: Change
         PresentationLink2(destination: SettingsView() ) {
           Image(systemName: "gear")
             .accentColor(.blue)
@@ -37,6 +40,7 @@ struct ContentView : View {
             .padding()
         },
                           trailing:
+        //TODO: Change
         PresentationLink2(destination: SafariContainerView(url: Commander.appleSupportRootUrl)) {
           Text(" Support")
             .accessibility(label: Text("Apple Support"))

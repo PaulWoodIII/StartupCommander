@@ -10,7 +10,7 @@ import SwiftUI
 import SFSafeSymbols
 
 struct SettingsView : View {
-
+  
   var body: some View {
     NavigationView {
       
@@ -114,7 +114,7 @@ struct SettingsView : View {
   }
   
   func rateAction() {
-    
+    //TODO: need to get the app on test flight to complete this
   }
 }
 

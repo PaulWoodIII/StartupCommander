@@ -2,15 +2,213 @@
     {
         "images": [
             {
-                "systemName": "d.square"
+                "systemName": "t.square"
             }
         ],
         "title": "Target Disk Mode",
-        "subtitle": "",
-        "keys": [
+          "keys": [
             "T"
         ],
-        "body": "A Control Key on Mac OS"
-    }
+        "body": ""
+    },
+    {
+      "images": [
+        {
+          "systemName": "d.square"
+        }
+      ],
+      "title": "Force the internal hard drive to be the boot drive",
+      "keys": [
+        "D"
+      ],
+      "body": "A Control Key on Mac OS"
+    },
+    {
+      "images": [
+        {
+          "systemName": "command"
+        },
+        {
+          "systemName": "option"
+        },
+        {
+          "systemName": "p.square"
+        },
+        {
+          "systemName": "r.square"
+        }
+      ],
+      "title": "Zap the P Ram",
+      "keys": [
+        "Command",
+        "Option",
+        "P",
+        "R"
+      ],
+      "body": "zapping the P Ram was a common way to solve issues on a Mac in the 1990s"
+    },
+    {
+      "images": [
+        {
+          "systemName": "command"
+        },
+        {
+          "systemName": "option"
+        },
+        {
+          "systemName": "n.square"
+        },
+        {
+          "systemName": "v.square"
+        }
+      ],
+      "title": "Clear NV RAM.",
+      "keys": [
+        "Command",
+        "Option",
+        "N",
+        "V"
+      ],
+      "body": "Clearing the NV Ram was a common way to solve issues on a Mac in the Power PC era"
+    },
+    {
+      "images": [
+        {
+          "systemName": "command"
+        },
+        {
+          "systemName": "option"
+        },
+        {
+          "systemName": "a.square"
+        },
+        {
+          "systemName": "v.square"
+        }
+      ],
+      "title": "Force an AV monitor to be recognized as one",
+      "keys": [
+        "Command",
+        "Option",
+        "N",
+        "V"
+      ],
+      "body": "Clearing the NV Ram was a common way to solve issues on a Mac in the Power PC era"
+    },
+    {
+      "images": [
+        {
+          "systemName": "n.square"
+        }
+      ],
+      "title": "Attempt to boot from network server",
+      "keys": [
+        "N"
+      ],
+      "body": "This will attempt to launch the computer using a network drive as the host operating system"
+    },
+    {
+      "images": [
+        {
+          "systemName": "command"
+        },
+        {
+          "systemName": "option"
+        }
+      ],
+      "title": "Force the internal hard drive to be the boot drive",
+      "keys": [
+        "Command",
+        "Option"
+      ],
+      "body": "If the Desktop has windows on it that would automatically reopen on your next startup, this command will ensure that the Desktop on first boot will not recreate those windows."
+    },
+    {
+      "images": [
+        {
+          "systemName": "command"
+        },
+        {
+          "systemName": "option"
+        },
+        {
+          "systemName": "shift"
+        },
+        {
+          "systemName": "delete.right"
+        }
+      ],
+      "title": "Boot from external",
+      "subtitle": "Similar to reset-all in open Firmware",
+      "keys": [
+        "Command",
+        "Option",
+        "Shift",
+        "Delete"
+      ],
+      "body": "Similar to target disk drive, this will boot the mac from an external disk"
+    },
+    {
+      "images": [
+        {
+          "systemName": "c.square"
+        }
+      ],
+      "title": "Startup From a CD or DVD",
+      "keys": [
+        "C"
+      ],
+      "body": "Use this command to startup the mac targeting an onboard CD or DVD Drive or using an external Apple CD Drive Bay"
+    },
+    {
+      "images": [
+        {
+          "systemName": "command"
+        }
+      ],
+      "title": "Boot with Virtual Memory off",
+      "keys": [
+        "Command"
+      ],
+      "body": "Boot with Virtual Memory off"
+    },
+    {
+      "images": [
+        {
+          "systemName": "shift"
+        }
+      ],
+      "title": "Disable Extensions",
+      "keys": [
+        "shift"
+      ],
+      "body": "Disable Extensions"
+    },
+    {
+      "images": [
+        {
+          "systemName": "x.square"
+        }
+      ],
+      "title": "Startup in Boot Partition",
+      "keys": [
+        "shift"
+      ],
+      "body": "Startup in OSX if OS9 and OXS in boot partition"
+    },
+    {
+      "images": [
+        {
+          "systemName": "x.square",
+        }
+        
+      ],
+      "title": "Startup in Boot Partition",
+      "keys": [
+        "shift"
+      ],
+      "body": "Startup in OSX if OS9 and OXS in boot partition"
+    },
+    
 ]
 

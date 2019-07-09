@@ -9,42 +9,43 @@
 import SwiftUI
 
 struct CommandKeyDetail : View {
-    
-    let command: CommandKeys
-    
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                HStack {
-                    ForEach(command.images) { (displayImage: DisplayImage) in
-                        Image(systemName: displayImage.systemName)
-                            .padding([.top, .trailing])
-                            .font(.title)
-                    }
-                }
-                
-                Text("Press Keys: " + command.allKeys)
-                    .font(.body)
-                
-                Divider()
-                
-                Text(command.body)
-                    .font(.body)
-                
-                Spacer()
-            }
-        }
-        .padding()
-        .navigationBarTitle(Text(command.title))
+  
+  let command: CommandKeys
+  
+  fileprivate func keyImageView() -> some View  {
+    return HStack {
+      ForEach(command.images) { (displayImage: DisplayImage) in
+        Image(systemName: displayImage.systemName)
+          .padding([.top, .trailing])
+          .font(.title)
+      }
     }
+  }
+  
+  var body: some View {
+    ScrollView {
+      VStack(alignment: .leading) {
+        keyImageView()
+        Text(command.title)
+          .lineLimit(.none)
+          .font(.headline)
+        Divider()
+        Text(command.body)
+          .lineLimit(.max)
+          .font(.body)
+      }
+    }
+    .padding()
+    .navigationBarTitle(Text(command.allKeys))
+  }
 }
 
 #if DEBUG
 struct CommandKeyDetail_Previews : PreviewProvider {
-    static var previews: some View {
-        NavigationView{
-            CommandKeyDetail(command: Commander.commands[3])
-        }
+  static var previews: some View {
+    NavigationView{
+      CommandKeyDetail(command: Commander.testCommands[7])
     }
+  }
 }
 #endif

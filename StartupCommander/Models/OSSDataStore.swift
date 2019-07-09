@@ -10,15 +10,15 @@ import SwiftUI
 import Combine
 
 struct OSSDependency: Identifiable {
-    var id = UUID()
-    var title: String
-    var license: String
+  var id = UUID()
+  var title: String
+  var license: String
 }
 
 struct OSSDataStore {
   
-    static let licences: [OSSDependency] = [
-        OSSDependency(title: "SFSafeSymbols", license: """
+  static let licences: [OSSDependency] = [
+    OSSDependency(title: "SFSafeSymbols", license: """
 # The MIT License (MIT)
 
 **Copyright (c) 2019 Piknotech**
@@ -41,6 +41,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-        )
-    ]
+    )
+  ]
 }

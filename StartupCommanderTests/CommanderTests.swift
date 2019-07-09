@@ -13,7 +13,7 @@ class CommanderTests: XCTestCase {
 
     func testExample() {
         let c = Commander(data: DataAssets.Commands.value)
-        XCTAssertEqual(c.dynamicCommands.count, 13)
+        XCTAssertEqual(c.commands.count, 13)
     }
 
 

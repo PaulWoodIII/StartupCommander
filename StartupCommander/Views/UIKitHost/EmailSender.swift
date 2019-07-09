@@ -29,7 +29,7 @@ class MailDelegate: NSObject, MFMailComposeViewControllerDelegate {
 }
 
 struct EmailSender: UIViewControllerRepresentable {
-
+  
   typealias UIViewControllerType = MFMailComposeViewController
   
   init( subject: String?,

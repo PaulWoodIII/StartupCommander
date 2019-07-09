@@ -25,7 +25,9 @@ extension UIViewController {
 
 extension UIViewController {
   
-  func presentViewControllerFromVisibleViewController(viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
+  func presentViewControllerFromVisibleViewController(viewControllerToPresent: UIViewController,
+                                                      animated flag: Bool,
+                                                      completion: (() -> Void)?) {
     if let navigationController = self as? UINavigationController {
       navigationController.topViewController?.presentViewControllerFromVisibleViewController(viewControllerToPresent: viewControllerToPresent, animated: true, completion: nil)
     } else if (presentedViewController != nil) {

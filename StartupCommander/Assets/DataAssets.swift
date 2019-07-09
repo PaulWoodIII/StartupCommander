@@ -10,12 +10,15 @@ import Foundation
 import UIKit
 
 enum DataAssets: String {
-    case Commands = "Commands"
+  case Commands = "Commands"
 }
 
 extension DataAssets {
-    var value: Data {
-        let asset = NSDataAsset(name: "Commands", bundle: Bundle.main)
-        return asset!.data
+  var value: Data {
+    switch self {
+    case .Commands:
+      let asset = NSDataAsset(name: "Commands", bundle: Bundle.main)
+      return asset!.data
     }
+  }
 }

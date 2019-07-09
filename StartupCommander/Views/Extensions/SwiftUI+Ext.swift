@@ -9,8 +9,8 @@
 import SwiftUI
 
 extension View {
-    /// Returns a type-erased version of the view.
-    public var typeErased: AnyView { AnyView(self) }
+  /// Returns a type-erased version of the view.
+  public var typeErased: AnyView { AnyView(self) }
 }
 
 extension View {

@@ -11,27 +11,27 @@ import SafariServices
 import UIKit
 
 class SafariViewControllerContainerDelegate: NSObject, SFSafariViewControllerDelegate {
-    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        controller.dismiss(animated: true, completion: nil)
-    }
+  func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+    controller.dismiss(animated: true, completion: nil)
+  }
 }
 
 struct SafariContainerView: UIViewControllerRepresentable {
-
-    typealias UIViewControllerType = SFSafariViewController
-
-    let url: URL
+  
+  typealias UIViewControllerType = SFSafariViewController
+  
+  let url: URL
+  
+  let delegate = SafariViewControllerContainerDelegate()
+  
+  func makeUIViewController(context: UIViewControllerRepresentableContext<SafariContainerView>) -> SFSafariViewController {
+    let vc = SFSafariViewController(url: url)
+    vc.delegate = delegate
+    return vc
+  }
+  
+  func updateUIViewController(_ uiViewController: SFSafariViewController,
+                              context: UIViewControllerRepresentableContext<SafariContainerView>) {
     
-    let delegate = SafariViewControllerContainerDelegate()
-    
-    func makeUIViewController(context: UIViewControllerRepresentableContext<SafariContainerView>) -> SFSafariViewController {
-        let vc = SFSafariViewController(url: url)
-        vc.delegate = delegate
-        return vc
-    }
-    
-    func updateUIViewController(_ uiViewController: SFSafariViewController,
-                                context: UIViewControllerRepresentableContext<SafariContainerView>) {
-        
-    }
+  }
 }
