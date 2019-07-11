@@ -15,7 +15,6 @@
 		3C0D75C122C1781A00EF0E0D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C0D75C022C1781A00EF0E0D /* Preview Assets.xcassets */; };
 		3C0D75C422C1781A00EF0E0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C0D75C222C1781A00EF0E0D /* LaunchScreen.storyboard */; };
 		3C0D75DA22C1781A00EF0E0D /* StartupCommanderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D75D922C1781A00EF0E0D /* StartupCommanderUITests.swift */; };
-		3C0D75E822C1791900EF0E0D /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D75E722C1791900EF0E0D /* Commands.swift */; };
 		3C0D75EA22C19DD300EF0E0D /* MainNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D75E922C19DD300EF0E0D /* MainNavigationView.swift */; };
 		3C0D75EF22C19F8C00EF0E0D /* CommandRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D75EE22C19F8C00EF0E0D /* CommandRow.swift */; };
 		3C0D75F122C1A49600EF0E0D /* CommandKeyDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D75F022C1A49600EF0E0D /* CommandKeyDetail.swift */; };
@@ -42,6 +41,7 @@
 		3C766CEE22C3C13C00BBB720 /* ContactMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C766CED22C3C13C00BBB720 /* ContactMethodCell.swift */; };
 		3C766CF022C3C5EB00BBB720 /* ListOStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C766CEF22C3C5EB00BBB720 /* ListOStrings.swift */; };
 		3C766CF222C3C8D100BBB720 /* SwiftUI+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C766CF122C3C8D100BBB720 /* SwiftUI+Styles.swift */; };
+		3C919C4522D6C30C002FFFF6 /* CommandKeyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C919C4422D6C30C002FFFF6 /* CommandKeyTest.swift */; };
 		3CA1D6BF22D3CB7E0085049A /* PresentationLink2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1D6BE22D3CB7E0085049A /* PresentationLink2.swift */; };
 		3CA1D6C322D3D48C0085049A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA1D6C222D3D48C0085049A /* CloudKit.framework */; };
 		3CABDB0922D3957E00D62303 /* PhoneCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABDB0822D3957E00D62303 /* PhoneCaller.swift */; };
@@ -83,7 +83,6 @@
 		3C0D75D522C1781A00EF0E0D /* StartupCommanderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StartupCommanderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C0D75D922C1781A00EF0E0D /* StartupCommanderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupCommanderUITests.swift; sourceTree = "<group>"; };
 		3C0D75DB22C1781A00EF0E0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3C0D75E722C1791900EF0E0D /* Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
 		3C0D75E922C19DD300EF0E0D /* MainNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationView.swift; sourceTree = "<group>"; };
 		3C0D75EE22C19F8C00EF0E0D /* CommandRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRow.swift; sourceTree = "<group>"; };
 		3C0D75F022C1A49600EF0E0D /* CommandKeyDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandKeyDetail.swift; sourceTree = "<group>"; };
@@ -109,6 +108,7 @@
 		3C766CED22C3C13C00BBB720 /* ContactMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMethodCell.swift; sourceTree = "<group>"; };
 		3C766CEF22C3C5EB00BBB720 /* ListOStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOStrings.swift; sourceTree = "<group>"; };
 		3C766CF122C3C8D100BBB720 /* SwiftUI+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Styles.swift"; sourceTree = "<group>"; };
+		3C919C4422D6C30C002FFFF6 /* CommandKeyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandKeyTest.swift; sourceTree = "<group>"; };
 		3CA1D6BE22D3CB7E0085049A /* PresentationLink2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationLink2.swift; sourceTree = "<group>"; };
 		3CA1D6C022D3D4890085049A /* StartupCommander.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StartupCommander.entitlements; sourceTree = "<group>"; };
 		3CA1D6C222D3D48C0085049A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -172,6 +172,7 @@
 		3C0D75B322C1781A00EF0E0D /* StartupCommander */ = {
 			isa = PBXGroup;
 			children = (
+				3CA1D6C022D3D4890085049A /* StartupCommander.entitlements */,
 				3C0D75ED22C19F6000EF0E0D /* AppScene */,
 				3C58F95622D4EA4300222C25 /* Services */,
 				3C58F95A22D4EC7E00222C25 /* Presenters */,
@@ -188,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				3C0D75C022C1781A00EF0E0D /* Preview Assets.xcassets */,
+				3C919C4422D6C30C002FFFF6 /* CommandKeyTest.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -238,7 +240,6 @@
 		3C0D75EC22C19F4B00EF0E0D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3C0D75E722C1791900EF0E0D /* Commands.swift */,
 				3C63FDDB22C41763006956C5 /* OSSDataStore.swift */,
 				3C2C5BBC22C2F7260064357D /* Resume.swift */,
 			);
@@ -253,7 +254,6 @@
 				3C0D75B622C1781A00EF0E0D /* SceneDelegate.swift */,
 				3C63FDDD22C41BB5006956C5 /* iPhoneEnvironment.swift */,
 				3C0D75C222C1781A00EF0E0D /* LaunchScreen.storyboard */,
-				3CA1D6C022D3D4890085049A /* StartupCommander.entitlements */,
 			);
 			path = AppScene;
 			sourceTree = "<group>";
@@ -496,6 +496,7 @@
 				3C0D75B522C1781A00EF0E0D /* AppDelegate.swift in Sources */,
 				3C63FDD522C412C1006956C5 /* DataAssets.swift in Sources */,
 				3CDE8C5722D5197C002B2AB9 /* Command+CommandKey.swift in Sources */,
+				3C919C4522D6C30C002FFFF6 /* CommandKeyTest.swift in Sources */,
 				3CABDB0B22D3964300D62303 /* EmailSender.swift in Sources */,
 				3C0D75EF22C19F8C00EF0E0D /* CommandRow.swift in Sources */,
 				3CABDB0922D3957E00D62303 /* PhoneCaller.swift in Sources */,
@@ -511,7 +512,6 @@
 				3C58F95C22D4EC9500222C25 /* CommandsPresenter.swift in Sources */,
 				3C2C5BBD22C2F7260064357D /* Resume.swift in Sources */,
 				3C1942DC22C2D62400BDF4A9 /* OSSView.swift in Sources */,
-				3C0D75E822C1791900EF0E0D /* Commands.swift in Sources */,
 				3C58F96922D4FCD800222C25 /* main.swift in Sources */,
 				3C1B546222D4CB2A006F686A /* DoneButton.swift in Sources */,
 				3C766CEC22C3B5DA00BBB720 /* SwiftUI+Ext.swift in Sources */,

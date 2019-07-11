@@ -37,7 +37,7 @@ struct CommandRow : View {
 struct CommandRow_Previews : PreviewProvider {
   static var previews: some View {
     NavigationView {
-      List(Commander.testCommands) { command in
+      List(CommandKeyDebug.commands) { command in
         CommandRow(command: command)
       }.navigationBarTitle("Command Row Tests")
     }

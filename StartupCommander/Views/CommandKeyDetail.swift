@@ -44,7 +44,7 @@ struct CommandKeyDetail : View {
 struct CommandKeyDetail_Previews : PreviewProvider {
   static var previews: some View {
     NavigationView{
-      CommandKeyDetail(command: Commander.testCommands[7])
+      CommandKeyDetail(command: CommandKeyDebug.commands[7])
     }
   }
 }

@@ -62,6 +62,7 @@ class CoreDataService: NSObject {
       self.commands = commands
       _ = self.fetchedResultsController
       if commands.count > 0 {
+        self.commands = commands
         return Just<[Command]>(commands)
           .setFailureType(to: NSError.self)
           .eraseToAnyPublisher()
@@ -89,10 +90,10 @@ class CoreDataService: NSObject {
     let commands = self.initialCommands.map { (key) -> Command in
       return Command.create(self.persistentContainer.viewContext, commandKey: key)
     }
-    return self.saveContext()
-      .flatMap { _ in
-        return Just<[Command]>(commands).setFailureType(to: NSError.self)
-    }.eraseToAnyPublisher()
+    self.commands = commands
+    return Just<[Command]>(commands)
+      .setFailureType(to: NSError.self)
+      .eraseToAnyPublisher()
   }
   
   // MARK: - Delete

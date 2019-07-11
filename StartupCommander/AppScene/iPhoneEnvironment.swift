@@ -10,8 +10,7 @@ import SwiftUI
 
 struct Environment {
   static let shared = Environment()
-  let commander = Commander(data: DataAssets.Commands.value)
-  let ossDataStore = OSSDataStore()
+  let commander = CommandsPresenter()
 }
 
 struct iPhoneEnvironment: ViewModifier {

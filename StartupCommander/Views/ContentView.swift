@@ -11,7 +11,7 @@ import UIKit
 
 struct ContentView : View {
   
-  @EnvironmentObject var commander: Commander
+  @EnvironmentObject var presenter: CommandsPresenter
   
   @State var isAboutShown: Bool = false
   @State var isAppleSupportShown: Bool = false
@@ -44,12 +44,12 @@ struct ContentView : View {
   }
   
   var appleSupportModal: Modal {
-    Modal(SafariContainerView(url: Commander.appleSupportRootUrl))
+    Modal(SafariContainerView(url: CommandsPresenter.Text.appleSupportRootUrl))
   }
   
   var body: some View {
     VStack {
-      Text(Commander.forAll)
+      Text(CommandsPresenter.Text.forAll)
         .multilineTextAlignment(.leading)
         .font(.title)
         .lineLimit(.none)
@@ -58,10 +58,14 @@ struct ContentView : View {
       Divider()
         .padding(.top)
       
-      List(commander.commands) { (command: CommandKeys) in
+      List(presenter.viewModel) { (command: CommandKeys) in
         CommandRow(command: command)
       }
     }
+    .onReceive(presenter.didChange, perform: {
+      print("did change")
+    })
+    .onAppear(perform: presenter.onAppear)
 //    .presentation( isAboutShown ? settingsModal : nil)
 //      .presentation( isAppleSupportShown ? appleSupportModal : nil)
       .navigationBarTitle(Text("Startup Commander"))
@@ -77,7 +81,7 @@ struct ContentView : View {
         },
                           trailing:
         //TODO: Change
-        PresentationLink2(destination: SafariContainerView(url: Commander.appleSupportRootUrl)) {
+        PresentationLink2(destination: SafariContainerView(url: CommandsPresenter.Text.appleSupportRootUrl)) {
           Text(" Support")
             .accessibility(label: Text("Apple Support"))
             .padding()

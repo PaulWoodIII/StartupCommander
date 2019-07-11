@@ -14,7 +14,7 @@ class CommanderTests: XCTestCase {
   
   
   func testTestCommands() {
-    XCTAssertEqual(Commander.testCommands.count, 11)
+    XCTAssertEqual(CommandKeyDebug.commands.count, 11)
   }
   
   

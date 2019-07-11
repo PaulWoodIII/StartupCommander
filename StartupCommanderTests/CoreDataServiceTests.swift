@@ -43,7 +43,7 @@ class CoreDataServiceTests: XCTestCase {
     let moc = testContainer.persistentContainer.viewContext
     sut.coreDataContainerService = testContainer
     
-    _ = Command.create(moc, commandKey: Commander.testCommands[0])
+    _ = Command.create(moc, commandKey: CommandKeyDebug.commands[0])
     try! sut.persistentContainer.viewContext.save()
     
     let results = testScheduler.start { self.sut.checkForCommands().map{return $0.count > 0} }
@@ -87,7 +87,7 @@ class CoreDataServiceTests: XCTestCase {
     sut.coreDataContainerService = TestPersistentContainer()
     
     _ = Command.create(sut.persistentContainer.viewContext,
-                       commandKey: Commander.testCommands[0])
+                       commandKey: CommandKeyDebug.commands[0])
     try! sut.persistentContainer.viewContext.save()
     
     /*TestableSubscriber<[Command], Never>*/
@@ -98,7 +98,7 @@ class CoreDataServiceTests: XCTestCase {
           XCTAssertEqual(self.sut.commands.count, 1)
           XCTAssertNotNil(self.sut.commands.first?.title ?? nil)
           XCTAssertEqual(self.sut.commands.first?.title ?? "NOT",
-                         Commander.testCommands.first!.title)
+                         CommandKeyDebug.commands.first!.title)
         }.flatMap { _ in
           return self.sut.deleteAllCommands()
         }.eraseToAnyPublisher()
