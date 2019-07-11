@@ -10,11 +10,15 @@ import XCTest
 @testable import StartupCommander
 
 class CommanderTests: XCTestCase {
-
-    func testExample() {
-        let c = Commander(data: DataAssets.Commands.value)
-        XCTAssertEqual(c.commands.count, 13)
-    }
-
-
+  
+  
+  
+  func testTestCommands() {
+    XCTAssertEqual(Commander.testCommands.count, 11)
+  }
+  
+  
+  func testCommands() {
+    XCTAssertNotNil(CoreDataService(data: DataAssets.Commands.value))
+  }
 }

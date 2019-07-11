@@ -10,36 +10,6 @@ import Foundation
 import SwiftUI
 import Combine
 
-typealias KeyboardKey = String
-
-extension KeyboardKey: Identifiable {
-  public var id: String { return self }
-}
-
-struct CommandKeys: Hashable, Codable, Identifiable {
-  
-  var id: String {
-    return title
-  }
-  
-  let images: [DisplayImage]
-  let title: String
-  let keys: [KeyboardKey]
-  let body: String
-  
-  let urlString: String? = nil
-  
-  var allKeys: String {
-    keys.joined(separator: ", ")
-  }
-}
-
-struct DisplayImage: Hashable, Codable, Identifiable {
-  let systemName: String
-  var id: String {
-    return systemName
-  }
-}
 
 class Commander: BindableObject {
   
