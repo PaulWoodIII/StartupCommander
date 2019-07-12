@@ -25,6 +25,9 @@
 		3C1B546222D4CB2A006F686A /* DoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1B546122D4CB2A006F686A /* DoneButton.swift */; };
 		3C2C5BBB22C2F6FA0064357D /* WorkExperienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2C5BBA22C2F6FA0064357D /* WorkExperienceCell.swift */; };
 		3C2C5BBD22C2F7260064357D /* Resume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2C5BBC22C2F7260064357D /* Resume.swift */; };
+		3C35D2F122D78100006605C2 /* ColorAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35D2F022D78100006605C2 /* ColorAssets.swift */; };
+		3C35D2F322D7884F006605C2 /* ToastBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35D2F222D7884F006605C2 /* ToastBox.swift */; };
+		3C35D2F522D7BCE8006605C2 /* AnimatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35D2F422D7BCE8006605C2 /* AnimatedButton.swift */; };
 		3C58F95922D4EB1B00222C25 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C58F95822D4EB1B00222C25 /* CoreDataService.swift */; };
 		3C58F95C22D4EC9500222C25 /* CommandsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C58F95B22D4EC9500222C25 /* CommandsPresenter.swift */; };
 		3C58F96022D4FB2700222C25 /* CoreDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C58F95F22D4FB2700222C25 /* CoreDataServiceTests.swift */; };
@@ -41,11 +44,13 @@
 		3C766CEE22C3C13C00BBB720 /* ContactMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C766CED22C3C13C00BBB720 /* ContactMethodCell.swift */; };
 		3C766CF022C3C5EB00BBB720 /* ListOStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C766CEF22C3C5EB00BBB720 /* ListOStrings.swift */; };
 		3C766CF222C3C8D100BBB720 /* SwiftUI+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C766CF122C3C8D100BBB720 /* SwiftUI+Styles.swift */; };
+		3C86044922D7D35100B7E552 /* ErrorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C86044822D7D35100B7E552 /* ErrorPresenter.swift */; };
 		3C919C4522D6C30C002FFFF6 /* CommandKeyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C919C4422D6C30C002FFFF6 /* CommandKeyTest.swift */; };
 		3CA1D6BF22D3CB7E0085049A /* PresentationLink2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1D6BE22D3CB7E0085049A /* PresentationLink2.swift */; };
 		3CA1D6C322D3D48C0085049A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA1D6C222D3D48C0085049A /* CloudKit.framework */; };
 		3CABDB0922D3957E00D62303 /* PhoneCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABDB0822D3957E00D62303 /* PhoneCaller.swift */; };
 		3CABDB0B22D3964300D62303 /* EmailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABDB0A22D3964300D62303 /* EmailSender.swift */; };
+		3CC1A3A322D768F3006ABBF4 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC1A3A222D768F3006ABBF4 /* ToastView.swift */; };
 		3CDE8C5322D50F2B002B2AB9 /* CoreDataContainerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE8C5222D50F2B002B2AB9 /* CoreDataContainerService.swift */; };
 		3CDE8C5722D5197C002B2AB9 /* Command+CommandKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE8C5622D5197C002B2AB9 /* Command+CommandKey.swift */; };
 		3CDE8C5A22D55157002B2AB9 /* TestPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE8C5422D510B0002B2AB9 /* TestPersistentContainer.swift */; };
@@ -93,6 +98,9 @@
 		3C1B546122D4CB2A006F686A /* DoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneButton.swift; sourceTree = "<group>"; };
 		3C2C5BBA22C2F6FA0064357D /* WorkExperienceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkExperienceCell.swift; sourceTree = "<group>"; };
 		3C2C5BBC22C2F7260064357D /* Resume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resume.swift; sourceTree = "<group>"; };
+		3C35D2F022D78100006605C2 /* ColorAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAssets.swift; sourceTree = "<group>"; };
+		3C35D2F222D7884F006605C2 /* ToastBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastBox.swift; sourceTree = "<group>"; };
+		3C35D2F422D7BCE8006605C2 /* AnimatedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedButton.swift; sourceTree = "<group>"; };
 		3C58F95722D4EA5B00222C25 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3C58F95822D4EB1B00222C25 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		3C58F95B22D4EC9500222C25 /* CommandsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandsPresenter.swift; sourceTree = "<group>"; };
@@ -108,12 +116,14 @@
 		3C766CED22C3C13C00BBB720 /* ContactMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMethodCell.swift; sourceTree = "<group>"; };
 		3C766CEF22C3C5EB00BBB720 /* ListOStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOStrings.swift; sourceTree = "<group>"; };
 		3C766CF122C3C8D100BBB720 /* SwiftUI+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Styles.swift"; sourceTree = "<group>"; };
+		3C86044822D7D35100B7E552 /* ErrorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPresenter.swift; sourceTree = "<group>"; };
 		3C919C4422D6C30C002FFFF6 /* CommandKeyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandKeyTest.swift; sourceTree = "<group>"; };
 		3CA1D6BE22D3CB7E0085049A /* PresentationLink2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationLink2.swift; sourceTree = "<group>"; };
 		3CA1D6C022D3D4890085049A /* StartupCommander.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StartupCommander.entitlements; sourceTree = "<group>"; };
 		3CA1D6C222D3D48C0085049A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		3CABDB0822D3957E00D62303 /* PhoneCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCaller.swift; sourceTree = "<group>"; };
 		3CABDB0A22D3964300D62303 /* EmailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSender.swift; sourceTree = "<group>"; };
+		3CC1A3A222D768F3006ABBF4 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		3CDE8C5222D50F2B002B2AB9 /* CoreDataContainerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContainerService.swift; sourceTree = "<group>"; };
 		3CDE8C5422D510B0002B2AB9 /* TestPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPersistentContainer.swift; sourceTree = "<group>"; };
 		3CDE8C5622D5197C002B2AB9 /* Command+CommandKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Command+CommandKey.swift"; sourceTree = "<group>"; };
@@ -233,6 +243,9 @@
 				3C2C5BBA22C2F6FA0064357D /* WorkExperienceCell.swift */,
 				3C766CED22C3C13C00BBB720 /* ContactMethodCell.swift */,
 				3C766CEF22C3C5EB00BBB720 /* ListOStrings.swift */,
+				3CC1A3A222D768F3006ABBF4 /* ToastView.swift */,
+				3C35D2F222D7884F006605C2 /* ToastBox.swift */,
+				3C35D2F422D7BCE8006605C2 /* AnimatedButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -281,8 +294,9 @@
 		3C58F95A22D4EC7E00222C25 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
-				3C58F95B22D4EC9500222C25 /* CommandsPresenter.swift */,
 				3C58F95D22D4EE4600222C25 /* README.md */,
+				3C58F95B22D4EC9500222C25 /* CommandsPresenter.swift */,
+				3C86044822D7D35100B7E552 /* ErrorPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -311,6 +325,7 @@
 			children = (
 				3C0D75BD22C1781A00EF0E0D /* Assets.xcassets */,
 				3C63FDD422C412C1006956C5 /* DataAssets.swift */,
+				3C35D2F022D78100006605C2 /* ColorAssets.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -488,8 +503,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C35D2F322D7884F006605C2 /* ToastBox.swift in Sources */,
+				3C35D2F522D7BCE8006605C2 /* AnimatedButton.swift in Sources */,
 				3C766CF022C3C5EB00BBB720 /* ListOStrings.swift in Sources */,
 				3C63FDDC22C41763006956C5 /* OSSDataStore.swift in Sources */,
+				3CC1A3A322D768F3006ABBF4 /* ToastView.swift in Sources */,
 				3CDE8C5322D50F2B002B2AB9 /* CoreDataContainerService.swift in Sources */,
 				3C2C5BBB22C2F6FA0064357D /* WorkExperienceCell.swift in Sources */,
 				3C1942D622C2782000BDF4A9 /* SafariContainterView.swift in Sources */,
@@ -506,6 +524,7 @@
 				3C1942D822C2ACE300BDF4A9 /* SettingsView.swift in Sources */,
 				3C1942DE22C2D6A900BDF4A9 /* AboutPaulView.swift in Sources */,
 				3C58F95922D4EB1B00222C25 /* CoreDataService.swift in Sources */,
+				3C86044922D7D35100B7E552 /* ErrorPresenter.swift in Sources */,
 				3C63FDDE22C41BB5006956C5 /* iPhoneEnvironment.swift in Sources */,
 				3C0D75F122C1A49600EF0E0D /* CommandKeyDetail.swift in Sources */,
 				3C0D75BC22C1781A00EF0E0D /* ContentView.swift in Sources */,
@@ -517,6 +536,7 @@
 				3C766CEC22C3B5DA00BBB720 /* SwiftUI+Ext.swift in Sources */,
 				3C0D75BA22C1781A00EF0E0D /* StartupCommander.xcdatamodeld in Sources */,
 				3CA1D6BF22D3CB7E0085049A /* PresentationLink2.swift in Sources */,
+				3C35D2F122D78100006605C2 /* ColorAssets.swift in Sources */,
 				3C766CEE22C3C13C00BBB720 /* ContactMethodCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

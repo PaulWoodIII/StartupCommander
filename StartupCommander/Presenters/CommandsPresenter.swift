@@ -33,7 +33,6 @@ class CommandsPresenter: BindableObject {
       .eraseToAnyPublisher()
   }
   
-  
   var serviceCancelable: Cancellable?
   func onAppear() {
     _ = service.startup()

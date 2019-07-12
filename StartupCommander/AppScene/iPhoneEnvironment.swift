@@ -11,6 +11,7 @@ import SwiftUI
 struct Environment {
   static let shared = Environment()
   let commander = CommandsPresenter()
+  let errorPresenter = ErrorPresenter()
 }
 
 struct iPhoneEnvironment: ViewModifier {
@@ -18,5 +19,6 @@ struct iPhoneEnvironment: ViewModifier {
     func body(content: Content) -> some View {
         content
             .environmentObject(Environment.shared.commander)
+            .environmentObject(Environment.shared.errorPresenter)
     }
 }
