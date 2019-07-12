@@ -28,6 +28,7 @@
 		3C35D2F122D78100006605C2 /* ColorAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35D2F022D78100006605C2 /* ColorAssets.swift */; };
 		3C35D2F322D7884F006605C2 /* ToastBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35D2F222D7884F006605C2 /* ToastBox.swift */; };
 		3C35D2F522D7BCE8006605C2 /* AnimatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35D2F422D7BCE8006605C2 /* AnimatedButton.swift */; };
+		3C3AAB1522D8A93C008FBB06 /* ColorAssetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3AAB1422D8A93C008FBB06 /* ColorAssetTests.swift */; };
 		3C58F95922D4EB1B00222C25 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C58F95822D4EB1B00222C25 /* CoreDataService.swift */; };
 		3C58F95C22D4EC9500222C25 /* CommandsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C58F95B22D4EC9500222C25 /* CommandsPresenter.swift */; };
 		3C58F96022D4FB2700222C25 /* CoreDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C58F95F22D4FB2700222C25 /* CoreDataServiceTests.swift */; };
@@ -101,6 +102,7 @@
 		3C35D2F022D78100006605C2 /* ColorAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAssets.swift; sourceTree = "<group>"; };
 		3C35D2F222D7884F006605C2 /* ToastBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastBox.swift; sourceTree = "<group>"; };
 		3C35D2F422D7BCE8006605C2 /* AnimatedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedButton.swift; sourceTree = "<group>"; };
+		3C3AAB1422D8A93C008FBB06 /* ColorAssetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAssetTests.swift; sourceTree = "<group>"; };
 		3C58F95722D4EA5B00222C25 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3C58F95822D4EB1B00222C25 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		3C58F95B22D4EC9500222C25 /* CommandsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandsPresenter.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				3C63FDD122C410AE006956C5 /* CommanderTests.swift */,
 				3C58F95F22D4FB2700222C25 /* CoreDataServiceTests.swift */,
 				3CDE8C5422D510B0002B2AB9 /* TestPersistentContainer.swift */,
+				3C3AAB1422D8A93C008FBB06 /* ColorAssetTests.swift */,
 			);
 			path = StartupCommanderTests;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 			files = (
 				3CDE8C5A22D55157002B2AB9 /* TestPersistentContainer.swift in Sources */,
 				3C58F96722D4FCC500222C25 /* TestingAppDelegate.swift in Sources */,
+				3C3AAB1522D8A93C008FBB06 /* ColorAssetTests.swift in Sources */,
 				3C58F96022D4FB2700222C25 /* CoreDataServiceTests.swift in Sources */,
 				3C63FDD222C410AE006956C5 /* CommanderTests.swift in Sources */,
 			);
