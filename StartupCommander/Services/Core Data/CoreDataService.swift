@@ -10,7 +10,12 @@ import Foundation
 import CoreData
 import Combine
 
+
 class CoreDataService: NSObject {
+  
+  struct Error: Swift.Error, Equatable {
+    
+  }
   
   var initialCommands: [CommandKeys] = []
   
@@ -81,7 +86,7 @@ class CoreDataService: NSObject {
         let fetched = try context.fetch(fetchRequest)
         promise(.success(fetched))
       } catch {
-        promise(.failure(error as Error))
+        promise(.failure(Error()))
       }
     }.eraseToAnyPublisher()
   }
@@ -111,8 +116,8 @@ class CoreDataService: NSObject {
         NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [context])
         self.commands = []
         promise(.success(()))
-      } catch let error {
-        promise(.failure(error))
+      } catch {
+        promise(.failure(Error()))
       }
     }.eraseToAnyPublisher()
   }
@@ -125,8 +130,8 @@ class CoreDataService: NSObject {
         do {
           try context.save()
           promise(.success(()))
-        } catch let error {
-          promise(.failure(error))
+        } catch {
+          promise(.failure(Error()))
         }
       }
       promise(.success(()))

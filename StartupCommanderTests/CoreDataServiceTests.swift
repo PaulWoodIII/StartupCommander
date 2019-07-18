@@ -91,9 +91,9 @@ class CoreDataServiceTests: XCTestCase {
     try! sut.persistentContainer.viewContext.save()
     
     /*TestableSubscriber<[Command], Never>*/
-    let _: TestableSubscriber<Void, NSError> = testScheduler.start { () -> AnyPublisher<Void, NSError> in
+    let _: TestableSubscriber<Void, CoreDataService.Error> = testScheduler.start { () -> AnyPublisher<Void, CoreDataService.Error> in
       
-      let startupToDelete: AnyPublisher<Void, NSError> =
+      let startupToDelete: AnyPublisher<Void, CoreDataService.Error> =
         self.sut.startup().map { _ in
           XCTAssertEqual(self.sut.commands.count, 1)
           XCTAssertNotNil(self.sut.commands.first?.title ?? nil)
