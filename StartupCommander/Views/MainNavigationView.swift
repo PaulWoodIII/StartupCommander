@@ -7,19 +7,24 @@
 //
 
 import SwiftUI
+import CombineFeedback
+import CombineFeedbackUI
 
 struct MainNavigationView : View {
   
-  @EnvironmentObject var commandsPresenter: CommandsPresenter
   @EnvironmentObject var errorPresenter: ErrorPresenter
   
   var body: some View {
     ZStack {
       NavigationView {
-        ContentView(viewModel: commandsPresenter.viewModel)
+        Widget(
+            viewModel: CommandsViewModel(),
+            render: CommandKeysView.init
+        )
+        //ContentView(viewModel: commandsPresenter.viewModel)
       }
       //ToastView(viewModel: errorPresenter.viewModel)
-    }.onAppear(perform: commandsPresenter.onAppear)
+    }
   }
 }
 

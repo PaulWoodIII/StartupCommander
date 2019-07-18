@@ -13,6 +13,8 @@ import Combine
 
 class CoreDataService: NSObject {
   
+  static let shared = CoreDataService(data: DataAssets.Commands.value)
+  
   struct Error: Swift.Error, Equatable {
     
   }
@@ -28,7 +30,6 @@ class CoreDataService: NSObject {
   }
   
   lazy private var fetchedResultsController: NSFetchedResultsController<Command> = {
-    
     let sort = NSSortDescriptor(key: "title", ascending: true)
     let req: NSFetchRequest<Command> = Command.fetchRequest()
     req.sortDescriptors = [sort]
@@ -45,15 +46,11 @@ class CoreDataService: NSObject {
   @Published var commands: [Command] = []
   private var _didChange = PassthroughSubject<Void, Never>()
   
-  init?(data: Data) {
+  init(data: Data) {
     let decoder = JSONDecoder()
-    if let commands = try? decoder.decode([CommandKeys].self,
-                                          from: data) {
-      self.initialCommands = commands
-    } else {
-      return nil
-    }
-    
+    let commands = try! decoder.decode([CommandKeys].self,
+                                       from: data)
+    self.initialCommands = commands
     
     // TODO:
     // On Application close or terminate we need to save
@@ -61,18 +58,17 @@ class CoreDataService: NSObject {
     // self.saveContext()
   }
   
-  func startup() -> AnyPublisher<[Command], Error> {
-    
-    return checkForCommands().flatMap{ commands -> AnyPublisher<[Command], Error> in
+  func startup() -> AnyPublisher<Bool, Error> {
+    return checkForCommands().flatMap{ commands -> AnyPublisher<Bool, Error> in
       self.commands = commands
       _ = self.fetchedResultsController
       if commands.count > 0 {
         self.commands = commands
-        return Just<[Command]>(commands)
+        return Just(true)
           .setFailureType(to: Error.self)
           .eraseToAnyPublisher()
       }
-      return self.saveInitialToCoreData().eraseToAnyPublisher()
+      return self.saveInitialToCoreData().map{ _ in return true }.eraseToAnyPublisher()
     }.eraseToAnyPublisher()
   }
   

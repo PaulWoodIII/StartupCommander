@@ -20,7 +20,7 @@ class CoreDataServiceTests: XCTestCase {
   func testIsEmptyOnInit() {
     let testScheduler = TestScheduler(initialClock: 0)
     
-    sut = CoreDataService(data: DataAssets.Commands.value)!
+    sut = CoreDataService(data: DataAssets.Commands.value)
     sut.coreDataContainerService = TestPersistentContainer()
     
     // schedules a subscription at 200, to be cancelled at 900
@@ -33,12 +33,11 @@ class CoreDataServiceTests: XCTestCase {
     ])
   }
   
-  
   func testIsLoadsFromDiskWhenStartup() {
     
     let testScheduler = TestScheduler(initialClock: 0)
     
-    sut = CoreDataService(data: DataAssets.Commands.value)!
+    sut = CoreDataService(data: DataAssets.Commands.value)
     let testContainer = TestPersistentContainer()
     let moc = testContainer.persistentContainer.viewContext
     sut.coreDataContainerService = testContainer
@@ -58,32 +57,26 @@ class CoreDataServiceTests: XCTestCase {
   func testInitialCommandsAdded() {
     let testScheduler = TestScheduler(initialClock: 0)
     
-    sut = CoreDataService(data: DataAssets.Commands.value)!
+    sut = CoreDataService(data: DataAssets.Commands.value)
     sut.coreDataContainerService = TestPersistentContainer()
     
     // schedules a subscription at 200, to be cancelled at 900
-    let results = testScheduler.start {
-      self.sut.startup().map{ commands -> [String] in
-        return commands.compactMap {$0.title}
-      }.eraseToAnyPublisher()
+    let results: TestableSubscriber<Bool, CoreDataService.Error> = testScheduler.start {
+      self.sut.startup()
     }
-    
-    // Expected values are the initial command values
-    let expected = sut.initialCommands.map{ key in
-      return key.title
-    }
-    
-    XCTAssertEqual(results.sequence, [
-      (200, .subscription),
-      (200, .input(expected)),
-      (200, .completion(.finished)),
-    ])
+    let expected: TestSequence<Bool, CoreDataService.Error> = [
+          (200, .subscription),
+          (200, .input(true)),
+          (200, .completion(.finished)),
+        ]
+    let res: TestSequence<Bool, CoreDataService.Error> = results.sequence
+    XCTAssertEqual(res, expected)
   }
   
   func testDeleteAllCommandsAdded() {
     let testScheduler = TestScheduler(initialClock: 0)
     
-    sut = CoreDataService(data: DataAssets.Commands.value)!
+    sut = CoreDataService(data: DataAssets.Commands.value)
     sut.coreDataContainerService = TestPersistentContainer()
     
     _ = Command.create(sut.persistentContainer.viewContext,

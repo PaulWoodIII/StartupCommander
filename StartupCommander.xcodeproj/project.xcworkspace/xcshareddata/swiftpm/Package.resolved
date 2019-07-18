@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "CombineFeedback",
+        "repositoryURL": "https://github.com/sergdort/CombineFeedback",
+        "state": {
+          "branch": "master",
+          "revision": "f14606fe13fc36d38ee396b776e95f30b746fed9",
+          "version": null
+        }
+      },
+      {
         "package": "Entwine",
         "repositoryURL": "https://github.com/tcldr/Entwine",
         "state": {

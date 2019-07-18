@@ -10,15 +10,12 @@ import SwiftUI
 
 struct Environment {
   static let shared = Environment()
-  let commander = CommandsPresenter()
   let errorPresenter = ErrorPresenter(loopErrors: true)
 }
 
 struct iPhoneEnvironment: ViewModifier {
   
-    func body(content: Content) -> some View {
-        content
-            .environmentObject(Environment.shared.commander)
-            .environmentObject(Environment.shared.errorPresenter)
-    }
+  func body(content: Content) -> some View {
+    content.environmentObject(Environment.shared.errorPresenter)
+  }
 }

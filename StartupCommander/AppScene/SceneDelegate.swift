@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import CombineFeedbackUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
@@ -29,12 +30,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     // Use a UIHostingController as window root view controller
+    let swiftRoot = UIHostingController(
+        rootView: NavigationView {
+          Widget(
+              viewModel: CommandsViewModel(),
+              render: CommandKeysView.init
+          ).modifier(iPhoneEnvironment())
+        }
+    )
+    
     if let windowScene = scene as? UIWindowScene {
       let window = UIWindow(windowScene: windowScene)
-      let swiftRoot = MainNavigationView()
-        .modifier(iPhoneEnvironment())
-      
-      window.rootViewController = UIHostingController(rootView: swiftRoot)
+      window.rootViewController = swiftRoot
       self.window = window
       window.makeKeyAndVisible()
     }
