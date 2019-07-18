@@ -23,76 +23,71 @@ struct CommandKeysView : View {
     self.context = context
   }
   
-  var isAboutShown: State<Bool> = State(initialValue: false)
-  var isAppleSupportShown: State<Bool> = State(initialValue: false)
+  enum SheetOptions: Identifiable {
+    
+    case about
+    case appleSupport
+
+    var id: Int {
+          return self.hashValue
+        }
+    
+    var view: some View {
+      switch self {
+      case .about:
+        return SettingsView().typeErased
+      case .appleSupport:
+        return SafariContainerView(url: DisplayText.appleSupportRootUrl).typeErased
+      }
+    }
+  }
+  
+  var sheetSelection: State<SheetOptions?> = State(initialValue: nil)
   
   var body: some View {
-      VStack {
-        Text(DisplayText.forAll)
-          .multilineTextAlignment(.leading)
-          .font(.title)
-          .lineLimit(.max)
-          .padding(.all)
-        
-        Divider()
-          .padding(.top)
-        
-        List(context.commands) { (command: CommandKeys) in
-          CommandRow(command: command)
-        }
+    VStack {
+      Text(DisplayText.forAll)
+        .multilineTextAlignment(.leading)
+        .font(.title)
+        .lineLimit(.max)
+        .padding(.all)
+      
+      Divider()
+        .padding(.top)
+      
+      List(context.commands) { (command: CommandKeys) in
+        CommandRow(command: command)
       }
-        //    .presentation( isAboutShown ? settingsModal : nil)
-        //      .presentation( isAppleSupportShown ? appleSupportModal : nil)
-        .navigationBarTitle(Text("Startup Commander"))
-        .navigationBarItems(leading:
-          
-          //TODO: Change
-          PresentationLink2(destination: SettingsView() ) {
-            Image(systemName: "gear")
-              .accentColor(.blue)
-              .imageScale(.large)
-              .accessibility(label: Text("About and Help"))
-              .padding()
-          },
-                            trailing:
-          //TODO: Change
-          PresentationLink2(destination: SafariContainerView(url: DisplayText.appleSupportRootUrl)) {
-            Text(" Support")
-              .accessibility(label: Text("Apple Support"))
-              .padding()
-          }
-      )
+    }.sheet(item: sheetSelection.binding,
+            onDismiss: { self.sheetSelection.value = nil },
+            content: { sheetSelection in
+              return sheetSelection.view
+    }).navigationBarTitle(Text("Startup Commander"))
+      .navigationBarItems(leading: gearButton, trailing:appleSupportButton)
   }
   
   var gearButton : some View {
     Button(action: {
-      self.isAboutShown.value = true
+      self.sheetSelection.value = .about
     }, label: {
       Image(systemName: "gear")
+        .accentColor(.blue)
         .imageScale(.large)
         .accessibility(label: Text("About and Help"))
         .padding()
     })
   }
   
-  var settingsModal: Modal {
-    Modal(SettingsView())
-  }
-  
   var appleSupportButton: some View {
     
     Button( action: {
-      self.isAppleSupportShown.value = true
+      self.sheetSelection.value = .appleSupport
     }, label: {
       Text(" Support")
         .accessibility(label: Text("Apple Support"))
         .padding()
     })
     
-  }
-  
-  var appleSupportModal: Modal {
-    Modal(SafariContainerView(url: DisplayText.appleSupportRootUrl))
   }
 }
 
