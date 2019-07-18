@@ -8,61 +8,122 @@
 
 import SwiftUI
 
+/// View that animates from the top of the screen and notifies the user of something,
+/// the user can click the indicator or pull and drag the view down to reveal more content
 struct ToastView : View {
   
-  @EnvironmentObject var errorPresenter: ErrorPresenter
-  @State var isShowing: Bool = false
-  var title: String
-  var subtitle: String
+  enum DisplayState {
+    case hidden
+    case peak
+    case full
+  }
   
-  static let bounds = UIScreen.main.bounds
+  var viewModel: DisplayableErrorViewModel?
+  
+  let bounds = UIScreen.main.bounds
+  
+  var displayState: DisplayState = .full
   
   var body: some View {
-    
-    VStack(alignment: .leading) {
+    ZStack{
       
-      HStack (alignment: .firstTextBaseline){
-        Image(systemSymbol: .exclamationmarkIcloud)
-          .font(.title)
-          .scaledToFill()
-
-        Text(errorPresenter.viewModel?.title ?? "")
-          .font(.largeTitle)
-        .lineLimit(1)
+      Rectangle()
+        .foregroundColor(Color(.Orange))
+        .edgesIgnoringSafeArea(.all)
+        .frame(
+          minWidth: 0,
+          maxWidth: .infinity,
+          minHeight: 150,
+          maxHeight: displayState != .full ? nil : .infinity,
+          alignment: .top
+      )
+      
+      VStack(alignment: .leading) {
         
-        Spacer()
-      }.frame(minWidth: 0, maxWidth: .infinity)
-      .padding(.horizontal)
-       .padding(.top)
-       .foregroundColor(.white)
+        HStack (alignment: .firstTextBaseline){
+          
+          Image(systemSymbol: .exclamationmarkIcloud)
+            .font(.title)
+            .scaledToFill()
+          
+          Text(viewModel?.title ?? "")
+            .font(.largeTitle)
+            .lineLimit(1)
+        }
+        .frame(alignment: .topLeading)
+          .padding([.top, .horizontal])
+          .foregroundColor(.white)
+        
+        SubtitleView(subtitle: viewModel?.subtitle ?? "")
+        
+        if displayState == .full {
+          Text("Sample Text, this could be a long explaination of the error, or instructions on ways to fix the problem that the app cannot perform itself")
+            .foregroundColor(.white)
+            .font(.body)
+            .lineLimit(nil)
+            .padding(.horizontal)
+            .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
+            .frame(minWidth: 0, maxWidth: .infinity,
+                   minHeight: 0, maxHeight: .infinity,
+                   alignment: .topLeading)
+        }
+        
+        TabbedViewBottom()
+          .frame( minHeight: 0, maxHeight:  .infinity, alignment: .bottom)
+          .edgesIgnoringSafeArea(.all)
+      }.frame(
+        minWidth: 0,
+        maxWidth: .infinity,
+        minHeight: 0,
+        maxHeight: .infinity,
+        alignment: .topLeading
+      ).animation(.spring())
       
-      SubtitleView(subtitle: errorPresenter.viewModel?.subtitle ?? "")
-      TabbedViewBottom()
-    }.background(Color.yellow)
-      .offset(y: errorPresenter.shouldDisplay ? -376 : -536)
-      .edgesIgnoringSafeArea(.top)
-      .frame(idealWidth: ToastView.bounds.width,
-             alignment: .topLeading)
-      .animation(.spring())
-//      .tapAction {
-//        self.isShowing.toggle()
-//      }
-//    .onReceive(errorPresenter.didChange) {
-//      self.isShowing = self.errorPresenter.shouldDisplay
-//      self.isShowing = self.errorPresenter.viewModel != nil
-//    }
+      
+      
+      
+    }
   }
   
 }
 
 #if DEBUG
+
+class EmptyErrorhandler: ErrorHandler {
+  
+}
+
 struct ToastView_Previews : PreviewProvider {
   static var previews: some View {
-    MainNavigationView()
-      .modifier(iPhoneEnvironment())
+    Group {
+      ZStack {
+        NavigationView {
+          Text("Preview View")
+        }
+        ToastView(viewModel: DisplayableErrorViewModel(title: "Title",
+                                                       subtitle: "Subtitle",
+                                                       errorHandler: EmptyErrorhandler()))
+      }
+      ZStack {
+        ToastView(viewModel: nil)
+        NavigationView {
+          Text("Preview View")
+        }
+      }
+    }
+    
   }
 }
 #endif
+
+
+extension AnyTransition {
+  static var moveInto: AnyTransition {
+    let insertion = AnyTransition.move(edge: .trailing)
+      .combined(with: .opacity)
+    return insertion
+  }
+}
 
 struct SubtitleView : View {
   
@@ -72,9 +133,9 @@ struct SubtitleView : View {
     return Text(self.subtitle)
       .font(.body)
       .lineLimit(2)
-      .padding(.horizontal)
-      .padding(.bottom)
+      .padding([.horizontal])
       .foregroundColor(.white)
+      .frame(alignment: .topLeading)
   }
 }
 
@@ -86,6 +147,6 @@ struct TabbedViewBottom : View {
         .foregroundColor(.gray)
         .frame(width: 60, height: 6, alignment: .center)
       Spacer()
-    }.padding(.bottom, 5)
+    }.padding(.bottom, 10)
   }
 }

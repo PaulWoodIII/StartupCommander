@@ -56,51 +56,51 @@ class CoreDataService: NSObject {
     // self.saveContext()
   }
   
-  func startup() -> AnyPublisher<[Command], NSError> {
+  func startup() -> AnyPublisher<[Command], Error> {
     
-    return checkForCommands().flatMap{ commands -> AnyPublisher<[Command], NSError> in
+    return checkForCommands().flatMap{ commands -> AnyPublisher<[Command], Error> in
       self.commands = commands
       _ = self.fetchedResultsController
       if commands.count > 0 {
         self.commands = commands
         return Just<[Command]>(commands)
-          .setFailureType(to: NSError.self)
+          .setFailureType(to: Error.self)
           .eraseToAnyPublisher()
       }
       return self.saveInitialToCoreData().eraseToAnyPublisher()
     }.eraseToAnyPublisher()
   }
   
-  func checkForCommands() -> AnyPublisher<[Command], NSError> {
+  func checkForCommands() -> AnyPublisher<[Command], Error> {
     let context = self.persistentContainer.viewContext
     let fetchRequest: NSFetchRequest<Command> = Command.fetchRequest()
     // Set the batch size to a suitable number.
     fetchRequest.fetchBatchSize = 100
-    return Future<[Command],NSError>.init { promise in
+    return Future<[Command],Error>.init { promise in
       do {
         let fetched = try context.fetch(fetchRequest)
         promise(.success(fetched))
       } catch {
-        promise(.failure(error as NSError))
+        promise(.failure(error as Error))
       }
     }.eraseToAnyPublisher()
   }
   
-  func saveInitialToCoreData() -> AnyPublisher<[Command], NSError> {
+  func saveInitialToCoreData() -> AnyPublisher<[Command], Error> {
     let commands = self.initialCommands.map { (key) -> Command in
       return Command.create(self.persistentContainer.viewContext, commandKey: key)
     }
     self.commands = commands
     return Just<[Command]>(commands)
-      .setFailureType(to: NSError.self)
+      .setFailureType(to: Error.self)
       .eraseToAnyPublisher()
   }
   
   // MARK: - Delete
-  func deleteAllCommands() -> AnyPublisher<Void, NSError> {
+  func deleteAllCommands() -> AnyPublisher<Void, Error> {
     
     
-    return Future<Void, NSError>.init { promise in
+    return Future<Void, Error>.init { promise in
       let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: Command.self))
       let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
       deleteRequest.resultType = .resultTypeObjectIDs
@@ -111,21 +111,21 @@ class CoreDataService: NSObject {
         NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [context])
         self.commands = []
         promise(.success(()))
-      } catch let error as NSError {
+      } catch let error {
         promise(.failure(error))
       }
     }.eraseToAnyPublisher()
   }
   
   // MARK: - Core Data Saving support
-  func saveContext () -> AnyPublisher<Void, NSError> {
-    return Future<Void, NSError>.init { promise in
+  func saveContext () -> AnyPublisher<Void, Error> {
+    return Future<Void, Error>.init { promise in
       let context = self.persistentContainer.viewContext
       if context.hasChanges {
         do {
           try context.save()
           promise(.success(()))
-        } catch let error as NSError {
+        } catch let error {
           promise(.failure(error))
         }
       }

@@ -12,38 +12,43 @@ import SwiftUI
 
 class CommandsPresenter: BindableObject {
   
-  struct Text {
-    static let forAll = "For all commands hold them until you see the screen change from black to "
-    static let appleSupportRootUrlString = "https://support.apple.com/en-us/HT201255"
-    static let appleSupportRootUrl: URL = {
-      return URL(string: CommandsPresenter.Text.appleSupportRootUrlString)!
-    }()
-  }
-  
-  @Published var viewModel: [CommandKeys] = []
+  @Published var viewModel = CommandsViewModel()
 
   var service = CoreDataService(data: DataAssets.Commands.value)!
   
-  private var _didChange = PassthroughSubject<[Command], Never>()
+  private var _willChange = PassthroughSubject<Void, Never>()
   
-  var didChange: AnyPublisher<[CommandKeys], Never> {
-    return self.$viewModel
-      .throttle(for: 0.1, scheduler: RunLoop.main, latest: true)
-      .receive(on: RunLoop.main)
-      .eraseToAnyPublisher()
+  var willChange: AnyPublisher<Void, Never> {
+    return _willChange.share().eraseToAnyPublisher()
   }
   
   var serviceCancelable: Cancellable?
   func onAppear() {
     _ = service.startup()
+      .replaceError(with: [])
       .sink{ _ in }
     serviceCancelable = service.$commands
       .share()
       .sink(receiveValue: { commands in
-        self.viewModel = commands.map { CommandKeys(command: $0) }
+        let commandKeys = commands.map { CommandKeys(command: $0) }
+        self._willChange.send(())
+        self.viewModel  = CommandsViewModel(commands: commandKeys)
       })
   }
   
+}
+
+struct CommandsViewModel {
+  struct Text {
+    static let forAll = "For all commands hold them until you see the screen change from black to "
+    static let appleSupportRootUrlString = "https://support.apple.com/en-us/HT201255"
+    static let appleSupportRootUrl: URL = {
+      return URL(string: CommandsViewModel.Text.appleSupportRootUrlString)!
+    }()
+  }
+  
+  var commands: [CommandKeys] = []
+
 }
 
 struct CommandKeys: Hashable, Codable, Identifiable {

@@ -10,16 +10,16 @@ import SwiftUI
 
 struct MainNavigationView : View {
   
+  @EnvironmentObject var commandsPresenter: CommandsPresenter
+  @EnvironmentObject var errorPresenter: ErrorPresenter
   
   var body: some View {
     ZStack {
       NavigationView {
-        ContentView()
+        ContentView(viewModel: commandsPresenter.viewModel)
       }
-      ToastView(title: "Error",
-                subtitle: "looks like thunderstorms in the cloud")
-      
-    }
+      //ToastView(viewModel: errorPresenter.viewModel)
+    }.onAppear(perform: commandsPresenter.onAppear)
   }
 }
 

@@ -10,52 +10,54 @@ import Foundation
 import Combine
 import SwiftUI
 
-class ErrorPresenter: BindableObject {
+protocol ErrorHandler {
+  
+}
+
+class ErrorPresenter: BindableObject, ErrorHandler {
   
   private var displayQueue: [DisplayableError] = []
   
-  @Published var shouldDisplay: Bool = false
   @Published var viewModel: DisplayableErrorViewModel? = nil
-  
-  var didChange = PassthroughSubject<Void, Never>()
-  
-  init() {
+
+  #if DEBUG
+  var loopErrors: Bool = false
+  init(loopErrors: Bool){
+    self.loopErrors = loopErrors
     loopErrorCreation()
   }
+  #endif
   
-  deinit {
-    print("This should never be destroyed outside of test")
-  }
+  var willChange = PassthroughSubject<Void, Never>()
   
+  #if DEBUG
   var makeErrors: Cancellable?
   func loopErrorCreation() {
-    makeErrors = Just<Void>(())
-      .delay(for: 2, scheduler:RunLoop.main)
-      .map({ _ in
-        self.shouldDisplay = true
-        self.didChange.send(())
-      })
-      .delay(for: 2, scheduler: RunLoop.main)
-      .map({ _ in
-        self.shouldDisplay = false
-        self.didChange.send(())
-      })
-      .setFailureType(to: NSError.self)
-      .tryMap({ _ in
-        throw NSError()
-      })
-      .retry(.max)
-      .sink(receiveValue: { _ in
+    guard loopErrors else { return }
 
-      })
+    makeErrors = Timer.publish(every: 1, on: RunLoop.current, in: .default)
+      .autoconnect()
+      .sink(receiveValue: { _ in
+          self.willChange.send(())
+          if self.viewModel == nil {
+          self.viewModel = DisplayableErrorViewModel(title: "Error",
+                                                     subtitle: "Subtitle",
+                                                     errorHandler: self)
+          } else {
+            self.viewModel = nil
+          }
+        })
   }
+  #endif
+
   
 }
 
 struct DisplayableErrorViewModel {
-  var wrappedError: DisplayableError?
-  var title = "A title"
-  var subtitle = "A title"
+  var title: String
+  var subtitle: String
+  var errorHandler: ErrorHandler
+  var userSelected: Bool = false
 }
 
 struct DisplayableError: Error {

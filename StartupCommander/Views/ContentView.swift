@@ -11,10 +11,48 @@ import UIKit
 
 struct ContentView : View {
   
-  @EnvironmentObject var presenter: CommandsPresenter
+  var viewModel: CommandsViewModel
   
   @State var isAboutShown: Bool = false
   @State var isAppleSupportShown: Bool = false
+  
+  var body: some View {
+    VStack {
+      Text(CommandsViewModel.Text.forAll)
+        .multilineTextAlignment(.leading)
+        .font(.title)
+        .lineLimit(.max)
+        .padding(.all)
+      
+      Divider()
+        .padding(.top)
+      
+      List(viewModel.commands) { (command: CommandKeys) in
+        CommandRow(command: command)
+      }
+    }
+      //    .presentation( isAboutShown ? settingsModal : nil)
+      //      .presentation( isAppleSupportShown ? appleSupportModal : nil)
+      .navigationBarTitle(Text("Startup Commander"))
+      .navigationBarItems(leading:
+        
+        //TODO: Change
+        PresentationLink2(destination: SettingsView() ) {
+          Image(systemName: "gear")
+            .accentColor(.blue)
+            .imageScale(.large)
+            .accessibility(label: Text("About and Help"))
+            .padding()
+        },
+                          trailing:
+        //TODO: Change
+        PresentationLink2(destination: SafariContainerView(url: CommandsViewModel.Text.appleSupportRootUrl)) {
+          Text(" Support")
+            .accessibility(label: Text("Apple Support"))
+            .padding()
+        }
+    )
+  }
   
   var gearButton : some View {
     Button(action: {
@@ -44,49 +82,7 @@ struct ContentView : View {
   }
   
   var appleSupportModal: Modal {
-    Modal(SafariContainerView(url: CommandsPresenter.Text.appleSupportRootUrl))
-  }
-  
-  var body: some View {
-    VStack {
-      Text(CommandsPresenter.Text.forAll)
-        .multilineTextAlignment(.leading)
-        .font(.title)
-        .lineLimit(.none)
-        .padding(.all)
-      
-      Divider()
-        .padding(.top)
-      
-      List(presenter.viewModel) { (command: CommandKeys) in
-        CommandRow(command: command)
-      }
-    }
-    .onReceive(presenter.didChange, perform: {
-      print("did change")
-    })
-    .onAppear(perform: presenter.onAppear)
-//    .presentation( isAboutShown ? settingsModal : nil)
-//      .presentation( isAppleSupportShown ? appleSupportModal : nil)
-      .navigationBarTitle(Text("Startup Commander"))
-      .navigationBarItems(leading:
-        
-        //TODO: Change
-        PresentationLink2(destination: SettingsView() ) {
-          Image(systemName: "gear")
-            .accentColor(.blue)
-            .imageScale(.large)
-            .accessibility(label: Text("About and Help"))
-            .padding()
-        },
-                          trailing:
-        //TODO: Change
-        PresentationLink2(destination: SafariContainerView(url: CommandsPresenter.Text.appleSupportRootUrl)) {
-          Text(" Support")
-            .accessibility(label: Text("Apple Support"))
-            .padding()
-        }
-    )
+    Modal(SafariContainerView(url: CommandsViewModel.Text.appleSupportRootUrl))
   }
 }
 
@@ -94,7 +90,7 @@ struct ContentView : View {
 struct ContentView_Previews : PreviewProvider {
   static var previews: some View {
     NavigationView {
-      ContentView()
+      ContentView(viewModel: CommandKeyDebug.commandsViewModel)
     }
   }
 }

@@ -45,6 +45,7 @@
 		3C766CEE22C3C13C00BBB720 /* ContactMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C766CED22C3C13C00BBB720 /* ContactMethodCell.swift */; };
 		3C766CF022C3C5EB00BBB720 /* ListOStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C766CEF22C3C5EB00BBB720 /* ListOStrings.swift */; };
 		3C766CF222C3C8D100BBB720 /* SwiftUI+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C766CF122C3C8D100BBB720 /* SwiftUI+Styles.swift */; };
+		3C79D59722D8FFAF00F408F1 /* AnchorAtTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C79D59622D8FFAF00F408F1 /* AnchorAtTop.swift */; };
 		3C86044922D7D35100B7E552 /* ErrorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C86044822D7D35100B7E552 /* ErrorPresenter.swift */; };
 		3C919C4522D6C30C002FFFF6 /* CommandKeyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C919C4422D6C30C002FFFF6 /* CommandKeyTest.swift */; };
 		3CA1D6BF22D3CB7E0085049A /* PresentationLink2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1D6BE22D3CB7E0085049A /* PresentationLink2.swift */; };
@@ -118,6 +119,7 @@
 		3C766CED22C3C13C00BBB720 /* ContactMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMethodCell.swift; sourceTree = "<group>"; };
 		3C766CEF22C3C5EB00BBB720 /* ListOStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOStrings.swift; sourceTree = "<group>"; };
 		3C766CF122C3C8D100BBB720 /* SwiftUI+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Styles.swift"; sourceTree = "<group>"; };
+		3C79D59622D8FFAF00F408F1 /* AnchorAtTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorAtTop.swift; sourceTree = "<group>"; };
 		3C86044822D7D35100B7E552 /* ErrorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPresenter.swift; sourceTree = "<group>"; };
 		3C919C4422D6C30C002FFFF6 /* CommandKeyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandKeyTest.swift; sourceTree = "<group>"; };
 		3CA1D6BE22D3CB7E0085049A /* PresentationLink2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationLink2.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				3CC1A3A222D768F3006ABBF4 /* ToastView.swift */,
 				3C35D2F222D7884F006605C2 /* ToastBox.swift */,
 				3C35D2F422D7BCE8006605C2 /* AnimatedButton.swift */,
+				3C79D59622D8FFAF00F408F1 /* AnchorAtTop.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				3C0D75B722C1781A00EF0E0D /* SceneDelegate.swift in Sources */,
 				3C766CF222C3C8D100BBB720 /* SwiftUI+Styles.swift in Sources */,
 				3C1942D822C2ACE300BDF4A9 /* SettingsView.swift in Sources */,
+				3C79D59722D8FFAF00F408F1 /* AnchorAtTop.swift in Sources */,
 				3C1942DE22C2D6A900BDF4A9 /* AboutPaulView.swift in Sources */,
 				3C58F95922D4EB1B00222C25 /* CoreDataService.swift in Sources */,
 				3C86044922D7D35100B7E552 /* ErrorPresenter.swift in Sources */,

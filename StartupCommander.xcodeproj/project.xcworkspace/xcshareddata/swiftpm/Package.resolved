@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Entwine",
+        "repositoryURL": "https://github.com/tcldr/Entwine",
+        "state": {
+          "branch": null,
+          "revision": "820b528827663a9abead8642498129b2e02aa3fa",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "SFSafeSymbols",
+        "repositoryURL": "https://github.com/piknotech/SFSafeSymbols.git",
+        "state": {
+          "branch": null,
+          "revision": "8d933a67de9d5b154472f6da3b2d84175e2e49cc",
+          "version": "0.3.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

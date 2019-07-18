@@ -11,7 +11,7 @@ import SwiftUI
 struct Environment {
   static let shared = Environment()
   let commander = CommandsPresenter()
-  let errorPresenter = ErrorPresenter()
+  let errorPresenter = ErrorPresenter(loopErrors: true)
 }
 
 struct iPhoneEnvironment: ViewModifier {

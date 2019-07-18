@@ -10,7 +10,11 @@ import Foundation
 
 #if DEBUG
 
+
 struct CommandKeyDebug {
+  
+  //Standard CommandsViewModel
+  static let commandsViewModel = CommandsViewModel(commands: CommandKeyDebug.commands)
 
   static let commands: [CommandKeys] = [
     CommandKeys(title: "Target Disk Mode",
