@@ -18,6 +18,10 @@ class CommandsViewModel: ViewModel<CommandsViewModel.State, CommandsViewModel.Ev
     var status: Status = .initial
     var commands: [CommandKeys] = []
     var serviceCancelable: Cancellable?
+    var rootSheet: Flow.Sheet?
+    var rootNavigation: Flow.RootNavigation?
+    let navigation = PassthroughSubject<Flow.RootNavigation?, Never>()
+    let flow = Flow()
     
     struct Text {
       static let forAll = "For all commands hold them until you see the screen change from black to "
@@ -33,6 +37,10 @@ class CommandsViewModel: ViewModel<CommandsViewModel.State, CommandsViewModel.Ev
     case monitorWith(_: Cancellable)
     case didLoad(_: [CommandKeys])
     case didFail(_: CoreDataService.Error)
+    case sheet(_: Flow.Sheet?)
+    case link(_: Flow.RootNavigation?)
+    case popNavigation
+    case popSheet
   }
   
   enum Status: Equatable {
@@ -55,6 +63,7 @@ class CommandsViewModel: ViewModel<CommandsViewModel.State, CommandsViewModel.Ev
       reducer: CommandsViewModel.reduce
     )
   }
+  
   static func startup(coreDataService startup: @escaping () -> AnyPublisher<Bool, CoreDataService.Error>) -> Feedback<State, Event> {
     return Feedback(predicate: { (state: CommandsViewModel.State) -> Bool in
       return state.status == Status.initial
@@ -93,6 +102,15 @@ class CommandsViewModel: ViewModel<CommandsViewModel.State, CommandsViewModel.Ev
       return state.set(\.status, .loading)
     case .monitorWith(let cancellable):
       return state.set(\.serviceCancelable, cancellable)
+    case .link(let navigation):
+      return state
+    case .sheet(let sheet):
+      return state.set(\.rootSheet, sheet)
+    case .popSheet:
+      return state.set(\.rootSheet, nil)
+    case .popNavigation:
+      state.flow.navigationLink?.presentedData?.value = nil
+      return state
     default:
       return state
     }

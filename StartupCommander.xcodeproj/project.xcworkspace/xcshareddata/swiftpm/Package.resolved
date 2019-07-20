@@ -15,8 +15,17 @@
         "repositoryURL": "https://github.com/tcldr/Entwine",
         "state": {
           "branch": null,
-          "revision": "820b528827663a9abead8642498129b2e02aa3fa",
-          "version": "0.4.0"
+          "revision": "414b359732dd5bb8461c01e372b9d3662426e85f",
+          "version": "0.6.0"
+        }
+      },
+      {
+        "package": "SafePreviewDevices",
+        "repositoryURL": "https://github.com/PaulWoodIII/SafePreviewDevices",
+        "state": {
+          "branch": "master",
+          "revision": "6805e67cfede9a61446e751457373638347bfcca",
+          "version": null
         }
       },
       {
@@ -24,8 +33,8 @@
         "repositoryURL": "https://github.com/piknotech/SFSafeSymbols.git",
         "state": {
           "branch": null,
-          "revision": "8d933a67de9d5b154472f6da3b2d84175e2e49cc",
-          "version": "0.3.1"
+          "revision": "6d243eed009eacef4354f80315309ba4e089c1ab",
+          "version": "0.4.0"
         }
       }
     ]

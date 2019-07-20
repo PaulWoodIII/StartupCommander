@@ -30,7 +30,19 @@ class MailDelegate: NSObject, MFMailComposeViewControllerDelegate {
 
 struct EmailSender: UIViewControllerRepresentable {
   
+  struct Config: Hashable {
+    let subject: String?
+    let messageBody: String?
+    let toRecipients: [String]?
+  }
+  
   typealias UIViewControllerType = MFMailComposeViewController
+  
+  init(config: Config) {
+    self.subject = config.subject
+    self.messageBody = config.messageBody
+    self.toRecipients = config.toRecipients
+  }
   
   init( subject: String?,
         messageBody: String?,

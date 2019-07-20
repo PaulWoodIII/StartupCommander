@@ -12,7 +12,7 @@ import CombineFeedbackUI
 
 struct MainNavigationView : View {
   
-  @EnvironmentObject var errorPresenter: ErrorPresenter
+  @EnvironmentObject var errorPresenter: ErrorViewModel
   
   var body: some View {
     ZStack {

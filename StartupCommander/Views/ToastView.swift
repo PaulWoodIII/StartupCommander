@@ -102,6 +102,7 @@ struct ToastView_Previews : PreviewProvider {
         }
         ToastView(viewModel: DisplayableErrorViewModel(title: "Title",
                                                        subtitle: "Subtitle",
+                                                       body: "",
                                                        errorHandler: EmptyErrorhandler()))
       }
       ZStack {

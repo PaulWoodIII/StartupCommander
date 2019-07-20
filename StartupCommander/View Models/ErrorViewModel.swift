@@ -1,5 +1,5 @@
 //
-//  ErrorPresenter.swift
+//  ErrorViewModel.swift
 //  StartupCommander
 //
 //  Created by Paul Wood on 7/11/19.
@@ -14,7 +14,7 @@ protocol ErrorHandler {
   
 }
 
-class ErrorPresenter: BindableObject, ErrorHandler {
+class ErrorViewModel: BindableObject, ErrorHandler {
   
   private var displayQueue: [DisplayableError] = []
   
@@ -42,6 +42,7 @@ class ErrorPresenter: BindableObject, ErrorHandler {
           if self.viewModel == nil {
           self.viewModel = DisplayableErrorViewModel(title: "Error",
                                                      subtitle: "Subtitle",
+                                                     body: "Body String",
                                                      errorHandler: self)
           } else {
             self.viewModel = nil
@@ -49,13 +50,12 @@ class ErrorPresenter: BindableObject, ErrorHandler {
         })
   }
   #endif
-
-  
 }
 
 struct DisplayableErrorViewModel {
   var title: String
   var subtitle: String
+  var body: String
   var errorHandler: ErrorHandler
   var userSelected: Bool = false
 }

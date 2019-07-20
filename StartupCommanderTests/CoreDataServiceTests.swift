@@ -26,7 +26,7 @@ class CoreDataServiceTests: XCTestCase {
     // schedules a subscription at 200, to be cancelled at 900
     let results = testScheduler.start { self.sut.checkForCommands().map{return $0.count > 0} }
     
-    XCTAssertEqual(results.sequence, [
+    XCTAssertEqual(results.recordedOutput, [
       (200, .subscription),
       (200, .input(false)),
       (200, .completion(.finished))
@@ -47,7 +47,7 @@ class CoreDataServiceTests: XCTestCase {
     
     let results = testScheduler.start { self.sut.checkForCommands().map{return $0.count > 0} }
     
-    XCTAssertEqual(results.sequence, [
+    XCTAssertEqual(results.recordedOutput, [
       (200, .subscription),
       (200, .input(true)),
       (200, .completion(.finished))
@@ -69,7 +69,7 @@ class CoreDataServiceTests: XCTestCase {
           (200, .input(true)),
           (200, .completion(.finished)),
         ]
-    let res: TestSequence<Bool, CoreDataService.Error> = results.sequence
+    let res: TestSequence<Bool, CoreDataService.Error> = results.recordedOutput
     XCTAssertEqual(res, expected)
   }
   

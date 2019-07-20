@@ -8,6 +8,7 @@
 
 import SwiftUI
 import UIKit
+import Combine
 import CombineFeedback
 import CombineFeedbackUI
 
@@ -18,31 +19,44 @@ struct CommandKeysView : View {
   typealias Event = CommandsViewModel.Event
   
   private let context: Context<CommandsState, Event>
+  private let modalBinding: Binding<Flow.Sheet?>
+  private let navBinding: Binding<Flow.RootNavigation?>
+  private let navigation = PassthroughSubject<Flow.RootNavigation?, Never>()
+  private let navCancel: Cancellable?
+  private var navigationLink: DynamicNavigationDestinationLink<Flow.RootNavigation, Flow.RootNavigation, AnyView>
   
   init(context: Context<CommandsState, Event>) {
     self.context = context
-  }
-  
-  enum SheetOptions: Identifiable {
-    
-    case about
-    case appleSupport
-
-    var id: Int {
-          return self.hashValue
-        }
-    
-    var view: some View {
-      switch self {
-      case .about:
-        return SettingsView().typeErased
-      case .appleSupport:
-        return SafariContainerView(url: DisplayText.appleSupportRootUrl).typeErased
+    let navBinding = context.binding(for: \.rootNavigation) { value -> CommandKeysView.Event in
+      if value != nil {
+        return Event.link(value)
+      } else {
+        return Event.popNavigation
       }
     }
+    self.navBinding = navBinding
+    self.navigationLink =
+      DynamicNavigationDestinationLink(
+        id: \Flow.RootNavigation.self,
+        content: { (destination: Flow.RootNavigation) -> AnyView? in
+          
+          switch destination {
+          case .detail(let key):
+            return CommandKeyDetail(command: key,
+                                    rootNavigation: navBinding).typeErased
+          case .root:
+            context.send(event: .popNavigation)//TEST?
+            return nil
+          }
+      })
+    self.navigationLink.presentedData
+    context.flow.navigationLink = self.navigationLink
+    self.modalBinding = context.binding(for: \.rootSheet)
+
+    navCancel = navigation.assign(to: \.value, on: navBinding)
   }
   
-  var sheetSelection: State<SheetOptions?> = State(initialValue: nil)
+
   
   var body: some View {
     VStack {
@@ -55,20 +69,25 @@ struct CommandKeysView : View {
       Divider()
         .padding(.top)
       
-      List(context.commands) { (command: CommandKeys) in
-        CommandRow(command: command)
+      List(context.commands) { (command: CommandKeys) -> CommandRow in
+        CommandRow(command: command,
+                   link: self.navigationLink)
       }
-    }.sheet(item: sheetSelection.binding,
-            onDismiss: { self.sheetSelection.value = nil },
-            content: { sheetSelection in
-              return sheetSelection.view
-    }).navigationBarTitle(Text("Startup Commander"))
+    }.navigationBarTitle(Text("Startup Commander"))
       .navigationBarItems(leading: gearButton, trailing:appleSupportButton)
+      .sheet(
+        item: modalBinding,
+        onDismiss: {
+          self.context.send(event: .popSheet)
+      },
+        content: { rootSheet in
+          return rootSheet.view
+      })
   }
   
   var gearButton : some View {
     Button(action: {
-      self.sheetSelection.value = .about
+      self.context.send(event: .sheet(.about))
     }, label: {
       Image(systemName: "gear")
         .accentColor(.blue)
@@ -81,7 +100,8 @@ struct CommandKeysView : View {
   var appleSupportButton: some View {
     
     Button( action: {
-      self.sheetSelection.value = .appleSupport
+      let url = DisplayText.appleSupportRootUrl
+      self.context.send(event: .sheet(.url(url)))
     }, label: {
       Text(" Support")
         .accessibility(label: Text("Apple Support"))
