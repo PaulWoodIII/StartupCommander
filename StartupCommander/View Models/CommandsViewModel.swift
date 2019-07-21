@@ -20,8 +20,9 @@ class CommandsViewModel: ViewModel<CommandsViewModel.State, CommandsViewModel.Ev
     var serviceCancelable: Cancellable?
     var rootSheet: Flow.Sheet?
     var rootNavigation: Flow.RootNavigation?
+    var detailView: CommandKeyDetail?
     let navigation = PassthroughSubject<Flow.RootNavigation?, Never>()
-    let flow = Flow()
+//    let flow = Flow()
     
     struct Text {
       static let forAll = "For all commands hold them until you see the screen change from black to "
@@ -109,8 +110,7 @@ class CommandsViewModel: ViewModel<CommandsViewModel.State, CommandsViewModel.Ev
     case .popSheet:
       return state.set(\.rootSheet, nil)
     case .popNavigation:
-      state.flow.navigationLink?.presentedData?.value = nil
-      return state
+      return state.set(\.detailView, nil)
     default:
       return state
     }

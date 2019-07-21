@@ -11,7 +11,6 @@ import SFSafeSymbols
 
 struct OSSView : View {
   
-  @State var didTap: Bool = false
   
   var body: some View {
     VStack {
@@ -22,10 +21,9 @@ struct OSSView : View {
         Image(systemSymbol: SFSymbol.chevronLeftSlashChevronRight)
           .font(.title)
       }.padding()
-      .tapAction {
-        self.didTap.toggle()
-      }
+      
       Divider()
+      
       List(OSSDataStore.licences) { software in
         NavigationLink(destination: OSSDetailView(software: software)) {
           VStack(alignment: .leading) {
@@ -43,7 +41,7 @@ struct OSSView : View {
               .font(.subheadline)
           }
         }
-      }
+      }.listStyle(.plain)
     }.navigationBarTitle(Text("Open Source Software"))
   }
 }

@@ -20,44 +20,12 @@ struct CommandKeysView : View {
   
   private let context: Context<CommandsState, Event>
   private let modalBinding: Binding<Flow.Sheet?>
-  private let navBinding: Binding<Flow.RootNavigation?>
-  private let navigation = PassthroughSubject<Flow.RootNavigation?, Never>()
-  private let navCancel: Cancellable?
-  private var navigationLink: DynamicNavigationDestinationLink<Flow.RootNavigation, Flow.RootNavigation, AnyView>
-  
+
   init(context: Context<CommandsState, Event>) {
     self.context = context
-    let navBinding = context.binding(for: \.rootNavigation) { value -> CommandKeysView.Event in
-      if value != nil {
-        return Event.link(value)
-      } else {
-        return Event.popNavigation
-      }
-    }
-    self.navBinding = navBinding
-    self.navigationLink =
-      DynamicNavigationDestinationLink(
-        id: \Flow.RootNavigation.self,
-        content: { (destination: Flow.RootNavigation) -> AnyView? in
-          
-          switch destination {
-          case .detail(let key):
-            return CommandKeyDetail(command: key,
-                                    rootNavigation: navBinding).typeErased
-          case .root:
-            context.send(event: .popNavigation)//TEST?
-            return nil
-          }
-      })
-    self.navigationLink.presentedData
-    context.flow.navigationLink = self.navigationLink
     self.modalBinding = context.binding(for: \.rootSheet)
-
-    navCancel = navigation.assign(to: \.value, on: navBinding)
   }
-  
 
-  
   var body: some View {
     VStack {
       Text(DisplayText.forAll)
@@ -69,9 +37,10 @@ struct CommandKeysView : View {
       Divider()
         .padding(.top)
       
-      List(context.commands) { (command: CommandKeys) -> CommandRow in
-        CommandRow(command: command,
-                   link: self.navigationLink)
+      List(context.commands) { (command: CommandKeys) in
+        NavigationLink(destination: CommandKeyDetail(command: command)) {
+          return CommandRow(command: command)
+        }
       }
     }.navigationBarTitle(Text("Startup Commander"))
       .navigationBarItems(leading: gearButton, trailing:appleSupportButton)

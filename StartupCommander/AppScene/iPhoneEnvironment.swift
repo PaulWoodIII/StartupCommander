@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct Environment {
-  static let shared = Environment()
+struct ApplicationEnvironment {
+  static let shared = ApplicationEnvironment()
   let errorPresenter = ErrorViewModel(loopErrors: true)
 }
 
 struct iPhoneEnvironment: ViewModifier {
   
   func body(content: Content) -> some View {
-    content.environmentObject(Environment.shared.errorPresenter)
+    content.environmentObject(ApplicationEnvironment.shared.errorPresenter)
   }
 }

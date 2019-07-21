@@ -10,12 +10,12 @@ import SwiftUI
 import SFSafeSymbols
 
 struct SettingsView : View {
-    
+  
+  @State var presentEmail: Bool = false
+  
   var body: some View {
     NavigationView {
-      
       Form {
-        
         Section(header: Text("⚙️")) {
           Text("A simple App by Paul Wood")
             .font(.headline)
@@ -23,7 +23,6 @@ struct SettingsView : View {
           Text("This app is designed to help you when your Mac needs to be rebooted in a special way. I often go to the Apple Support documentations or Stack Overflow when I need to remember these commands but this has happened often enough when I have no internet access that having that information cached on my phone would help")
             .font(.body)
             .lineLimit(.max)
-          
         }
         
         Section(header: Text("💸➡️👨‍💻➡️📱➡️💸")) {
@@ -36,29 +35,22 @@ struct SettingsView : View {
               Text("11 years of experience on the platform might be what your project needs right now.")
                 .font(.body)
                 .lineLimit(.max)
-              
             }
             Spacer()
-            Button(action: emailAction) {
+            Button(action: self.presentEmail.toggle) {
               Text("Email")
             }
           }
-          
         }
         
         Section(header: Text("🤗")) {
-          
           NavigationLink(destination: AboutPaulView()){
-            
             HStack {
               Text("About the Author")
                 .font(.headline)
             }
-            
           }
-          
           NavigationLink(destination: OSSView()){
-            
             HStack {
               Text("Open-Source Software")
                 .font(.headline)
@@ -67,17 +59,14 @@ struct SettingsView : View {
         }
         
         Section(header: Text("📫")) {
-          
           HStack{
             Text("Send Feedback")
               .font(.headline)
-            
             Spacer()
-            Button(action: emailAction) {
+            Button(action: self.presentEmail.toggle) {
               Text("Email")
             }
           }.tapAction(emailAction)
-          
           HStack{
             VStack(alignment: .leading) {
               HStack {
@@ -95,22 +84,20 @@ struct SettingsView : View {
                 .lineLimit(.max)
                 .font(.body)
             }
-            
-            
-            
-            
           }.tapAction(rateAction)
-          
         }
-        
       }
       .navigationBarTitle(Text("About and Help"))
-      
-    }
+    }.sheet(isPresented: self.$presentEmail,
+           content: { _ in
+            EmailSender(config:  EmailSender.Config(subject: "Startup Commander",
+                                                    messageBody: nil,
+                                                    toRecipients: [Resume.contactEmailUrlString]))
+    })
   }
   
   func emailAction() {
-    print(Resume.contactEmailUrlString)
+    self.presentEmail.toggle()
   }
   
   func rateAction() {

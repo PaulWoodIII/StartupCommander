@@ -11,7 +11,6 @@ import SwiftUI
 struct CommandKeyDetail : View {
   
   let command: CommandKeys
-  let rootNavigation: Binding<Flow.RootNavigation?>
   
   fileprivate func keyImageView() -> some View  {
     return HStack {
@@ -34,12 +33,8 @@ struct CommandKeyDetail : View {
         Text(command.body)
           .lineLimit(.max)
           .font(.body)
-        Button("Back") {
-          self.rootNavigation.value = nil
-        }
       }
-    }
-    .padding()
+    }.padding()
     .navigationBarTitle(Text(command.allKeys))
   }
 }
@@ -48,8 +43,8 @@ struct CommandKeyDetail : View {
 struct CommandKeyDetail_Previews : PreviewProvider {
   static var previews: some View {
     NavigationView{
-      CommandKeyDetail(command: CommandKeyDebug.commands[7],
-                       rootNavigation: .constant(.detail(CommandKeyDebug.commands[7])))
+      CommandKeyDetail(command: CommandKeyDebug.commands[7])
+//                       rootNavigation: .constant(.detail(CommandKeyDebug.commands[7])))
     }
   }
 }
